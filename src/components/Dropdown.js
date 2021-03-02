@@ -8,6 +8,11 @@ import CloseIcon from "../assets/svgs/closeIcon.svg"
 
 const Dropdown = () => {
   const { isOpen, toggle, isToggled } = useContext(Context)
+  const [currentLocation, setCurrentLocation] = useState(null)
+
+  useEffect(() => {
+    setCurrentLocation(window.location.pathname)
+  })
 
   return (
     <DropdownContainer isOpen={isOpen} onClick={toggle} isToggled={isToggled}>
@@ -15,7 +20,7 @@ const Dropdown = () => {
         <Icon />
       </IconContainer>
       <DropdownWrapper>
-        {window.location.pathname === "/" ? (
+        {currentLocation === "/" ? (
           <DropdownMenu>
             {menuData.map((item, index) => (
               <DropdownLink
