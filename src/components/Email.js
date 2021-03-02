@@ -22,6 +22,7 @@ const Email = () => {
           <Title>Get In Touch</Title>
         </TitleContainer>
         <ContactForm action="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contactForm" />
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
 
           <EmailInput
