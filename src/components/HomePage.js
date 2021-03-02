@@ -8,7 +8,7 @@ import { Context } from "../Context"
 import "aos/dist/aos.css"
 import MePng from "../assets/images/me.png"
 import SpeechBubble from "../assets/svgs/speechBubble.svg"
-import ArrowDown from "../assets/svgs/arrowdown.svg"
+import ArrowDown from "../assets/svgs/arrowDown.svg"
 
 const HomePage = () => {
   const { isToggled } = useContext(Context)

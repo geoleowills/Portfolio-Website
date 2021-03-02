@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { Link as ScrollLink } from "react-scroll"
 import { Context } from "../Context"
-import ArrowDown from "../assets/svgs/arrowdown.svg"
+import ArrowDown from "../assets/svgs/arrowDown.svg"
 
 const Footer = () => {
   const { isToggled } = useContext(Context)
