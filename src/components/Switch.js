@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { Context } from "../Context"
-import MoonIcon from "../assets/svgs/moonicon.svg"
-import SunIcon from "../assets/svgs/sunicon.svg"
+import MoonIcon from "../assets/svgs/moonIcon.svg"
+import SunIcon from "../assets/svgs/sunIcon.svg"
 
 const Switch = () => {
   const { isToggled, setIsToggled, onToggle } = useContext(Context)

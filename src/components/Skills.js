@@ -6,7 +6,7 @@ import { FutureSkillsData } from "../data/FutureSkills"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { Context } from "../Context"
-import SkillsIcon from "../assets/svgs/skillsicon.svg"
+import SkillsIcon from "../assets/svgs/skillsIcon.svg"
 
 const Stats = () => {
   const { isToggled } = useContext(Context)

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
-import GitHubLogo from "../assets/svgs/githublogo.svg"
+import GitHubLogo from "../assets/svgs/gitHubLogo.svg"
 import { Context } from "../Context"
 
 const ModalWindow = () => {

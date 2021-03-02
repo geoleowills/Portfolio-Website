@@ -2,9 +2,9 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import "aos/dist/aos.css"
 import { Context } from "../Context"
-import GithubLogo from "../assets/svgs/githublogo.svg"
-import LinkedinLogo from "../assets/svgs/linkedinlogo.svg"
-import MailIcon from "../assets/svgs/mailicon.svg"
+import GithubLogo from "../assets/svgs/gitHubLogo.svg"
+import LinkedinLogo from "../assets/svgs/linkedinLogo.svg"
+import MailIcon from "../assets/svgs/mailIcon.svg"
 
 const SidebarLeft = () => {
   const { isToggled } = useContext(Context)

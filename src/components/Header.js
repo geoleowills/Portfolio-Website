@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { Context } from "../Context"
 import Switch from "./Switch"
 import { menuData } from "../data/MenuData"
-import MenuBars from "../assets/svgs/menubars.svg"
+import MenuBars from "../assets/svgs/menuBars.svg"
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false)

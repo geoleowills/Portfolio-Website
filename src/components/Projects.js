@@ -7,7 +7,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { Context } from "../Context"
 import ModalWindow from "./ModalWindow"
-import CodingIcon from "../assets/svgs/codingicon.svg"
+import CodingIcon from "../assets/svgs/codingIcon.svg"
 
 const Projects = () => {
   const { isToggled } = useContext(Context)

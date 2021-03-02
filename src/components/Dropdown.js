@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from "gatsby"
 import { Link as ScrollLink } from "react-scroll"
 import { Context } from "../Context"
 import { menuData } from "../data/MenuData"
-import CloseIcon from "../assets/svgs/closeicon.svg"
+import CloseIcon from "../assets/svgs/closeIcon.svg"
 
 const Dropdown = () => {
   const { isOpen, toggle, isToggled } = useContext(Context)

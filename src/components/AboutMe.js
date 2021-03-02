@@ -5,7 +5,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { Context } from "../Context"
-import ProfileIcon from "../assets/svgs/profileicon.svg"
+import ProfileIcon from "../assets/svgs/profileIcon.svg"
 
 const AboutMe = () => {
   const { isToggled } = useContext(Context)
