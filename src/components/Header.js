@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { Link as GatsbyLink } from "gatsby"
 import { Link as ScrollLink } from "react-scroll"
 import styled from "styled-components"
@@ -9,6 +9,11 @@ import MenuBars from "../assets/svgs/menuBars.svg"
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false)
+  const [currentLocation, setCurrentLocation] = useState(null)
+
+  useEffect(() => {
+    setCurrentLocation(window.location.pathname)
+  })
 
   const { isToggled, onToggle, toggle } = useContext(Context)
 
@@ -18,7 +23,7 @@ const Header = () => {
         <Initials isToggled={isToggled}>GW</Initials>
       </IconLink>
       <Nav navbar={navbar} isToggled={isToggled}>
-        {window.location.pathname === "/" ? (
+        {currentLocation === "/" ? (
           <NavMenu>
             {menuData.map((item, index) => (
               <NavLink
