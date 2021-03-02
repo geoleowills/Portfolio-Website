@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import styled from "styled-components"
 import { Link as GatsbyLink } from "gatsby"
 import { Link as ScrollLink } from "react-scroll"
