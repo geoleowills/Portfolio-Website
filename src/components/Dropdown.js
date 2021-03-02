@@ -8,7 +8,7 @@ import CloseIcon from "../assets/svgs/closeIcon.svg"
 
 const Dropdown = () => {
   const { isOpen, toggle, isToggled } = useContext(Context)
-  const [currentLocation, setCurrentLocation] = useState(null)
+  const [currentLocation, setCurrentLocation] = useState("/")
 
   useEffect(() => {
     setCurrentLocation(window.location.pathname)
