@@ -39,8 +39,8 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "env-cmd .env gatsby build",
-    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "develop": "env-cmd .env gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

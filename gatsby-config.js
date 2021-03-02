@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `video`,
+        name: `videos`,
         path: `${__dirname}/src/assets/videos`,
       },
     },
