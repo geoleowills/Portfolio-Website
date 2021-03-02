@@ -9,7 +9,7 @@ import MenuBars from "../assets/svgs/menuBars.svg"
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false)
-  const [currentLocation, setCurrentLocation] = useState(null)
+  const [currentLocation, setCurrentLocation] = useState("/")
 
   useEffect(() => {
     setCurrentLocation(window.location.pathname)
