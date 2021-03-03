@@ -24,6 +24,7 @@ const Email = () => {
         <ContactForm
           name="contactForm"
           method="POST"
+          action="https://www.georgewillens.com/"
           data-netlify="true"
           data-netlify-recaptcha="true"
         >
