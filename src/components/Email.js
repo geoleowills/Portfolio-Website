@@ -38,7 +38,7 @@ const Email = () => {
             id="message"
             rows="8"
           ></MessageInput>
-
+          <div data-netlify-recaptcha="true"></div>
           <Button type="submit" value="SEND ➤"></Button>
         </ContactForm>
       </RightColumn>
