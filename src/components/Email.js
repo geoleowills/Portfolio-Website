@@ -44,7 +44,7 @@ const Email = () => {
             rows="8"
           ></MessageInput>
           <div
-            class="g-recaptcha"
+            className="g-recaptcha"
             data-sitekey={process.env.SITE_RECAPTCHA_KEY}
           ></div>
           <Button type="submit" value="SEND ➤"></Button>
