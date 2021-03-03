@@ -26,7 +26,6 @@ const Email = () => {
           method="POST"
           action="https://www.georgewillens.com/"
           data-netlify="true"
-          data-netlify-recaptcha="true"
         >
           <input type="hidden" name="form-name" value="contactForm" />
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
@@ -44,7 +43,10 @@ const Email = () => {
             id="message"
             rows="8"
           ></MessageInput>
-          <div data-netlify-recaptcha="true"></div>
+          <div
+            class="g-recaptcha"
+            data-sitekey={process.env.SITE_RECAPTCHA_KEY}
+          ></div>
           <Button type="submit" value="SEND ➤"></Button>
         </ContactForm>
       </RightColumn>
