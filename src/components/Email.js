@@ -25,9 +25,15 @@ const Email = () => {
           name="contactForm"
           method="POST"
           action="https://www.georgewillens.com/"
-          data-netlify-recaptcha="true"
+          netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="contactForm" />
+          <p class="hidden">
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
+          </p>
+
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
 
           <EmailInput
@@ -43,10 +49,7 @@ const Email = () => {
             id="message"
             rows="8"
           ></MessageInput>
-          <div
-            className="g-recaptcha"
-            data-sitekey={process.env.SITE_RECAPTCHA_KEY}
-          ></div>
+
           <Button type="submit" value="SEND ➤"></Button>
         </ContactForm>
       </RightColumn>
