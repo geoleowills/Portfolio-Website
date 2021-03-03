@@ -25,7 +25,6 @@ const Email = () => {
           name="contactForm"
           method="POST"
           action="https://www.georgewillens.com/"
-          data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contactForm" />
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
