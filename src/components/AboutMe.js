@@ -101,6 +101,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 35px;
+  font-size: 0.95rem;
 
   & > p {
     margin-bottom: 1rem;

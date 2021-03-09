@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
@@ -14,6 +14,11 @@ const Projects = () => {
   const { modalDisplay, setModalDisplay, setSelectedModal } = useContext(
     Context
   )
+  const [videoUrl, setVideoUrl] = useState(null)
+  const [heading, setHeading] = useState(null)
+  const [description, setDescription] = useState(null)
+  const [technologies, setTechnologies] = useState([])
+  const [gitLink, setGitLink] = useState(null)
 
   const { switchModalDisplay } = useContext(Context)
   useEffect(() => {
@@ -27,6 +32,12 @@ const Projects = () => {
           node {
             id
             heading
+            projectid
+            githubLink
+            technologiesUsed
+            description {
+              raw
+            }
             shortDescription {
               raw
             }
@@ -40,6 +51,36 @@ const Projects = () => {
       }
     }
   `)
+  // useEffect(() => {
+  //   cardData.allContentfulModalWindow.edges.forEach(data => {
+  //     if (id === data.node.projectid) {
+  //       setVideoUrl(
+  //         `https://player.vimeo.com/video/${data.node.videoId}?loop=1&title=0&byline=0&portrait=0`
+  //       )
+  //       setHeading(data.node.heading)
+  //       setDescription(renderRichText(data.node.description))
+
+  //       const technologiesList = data.node.technologiesUsed.map(
+  //         (tech, index) => (
+  //           <React.Fragment>
+  //             <li>{tech}</li>
+  //             {data.node.technologiesUsed.length != index + 1 ? (
+  //               <Underline />
+  //             ) : (
+  //               <span
+  //                 css={`
+  //                   display: none;
+  //                 `}
+  //               ></span>
+  //             )}
+  //           </React.Fragment>
+  //         )
+  //       )
+  //       setTechnologies(technologiesList)
+  //       setGitLink(data.node.githubLink)
+  //     }
+  //   })
+  // }, [])
 
   const handleModalClick = e => {
     setSelectedModal(e.target.id)
@@ -52,7 +93,7 @@ const Projects = () => {
       projectArray.push(
         <ProjectCard
           key={index}
-          data-aos="fade-down"
+          data-aos="fade-left"
           data-aos-delay="50"
           data-aos-duration="1000"
         >
@@ -63,10 +104,26 @@ const Projects = () => {
 
           <CardTitle>{item.node.heading}</CardTitle>
           <Button id={index} onClick={handleModalClick}>
-            Details
+            ▶ Video
           </Button>
           <CardDescription>
-            {renderRichText(item.node.shortDescription)}
+            {renderRichText(item.node.description)}{" "}
+            <TechnologiesList>
+              {item.node.technologiesUsed.map((tech, index) => (
+                <React.Fragment>
+                  <li>{tech}</li>
+                  {/* {item.node.technologiesUsed.length !== index + 1 ? (
+                  <Underline />
+                ) : (
+                  <span
+                    css={`
+                      display: none;
+                    `}
+                  ></span>
+                )} */}
+                </React.Fragment>
+              ))}
+            </TechnologiesList>
           </CardDescription>
         </ProjectCard>
       )
@@ -79,12 +136,16 @@ const Projects = () => {
       {modalDisplay ? <ModalWindow /> : <span></span>}
       <ProjectContainer isToggled={isToggled}>
         <TargetDiv id="portfolio"></TargetDiv>
-        <TitleContainer>
+        <TitleContainer
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
           <Icon />
           <ProjectsHeading>PROJECT PORTFOLIO</ProjectsHeading>
         </TitleContainer>
         <Underline
-          data-aos="fade-right"
+          data-aos="fade-left"
           data-aos-delay="50"
           data-aos-duration="1000"
         />
@@ -155,14 +216,14 @@ const ProjectWrapper = styled.div`
 const ProjectCard = styled.div`
   position: relative;
   width: 100%;
-  max-height: 350px;
+  height: 700px;
   background-color: var(--main-pink);
   color: var(--very-light-grey);
   border-radius: 10px;
   transition: 0.2s ease;
 `
 const ProjectImg = styled(Img)`
-  height: 70%;
+  height: 40%;
   max-width: 100%;
   border-radius: 10px;
   filter: brightness(70%);
@@ -189,10 +250,10 @@ const Button = styled.div`
   align-items: center;
   position: absolute;
   width: 100px;
-  height: 45px;
+  height: 42px;
   background-color: var(--main-pink);
-  bottom: 120px;
-  left: 20px;
+  top: 220px;
+  left: 17px;
   border-radius: 100px;
   cursor: pointer;
 
@@ -201,25 +262,31 @@ const Button = styled.div`
 `
 const CardDescription = styled.div`
   display: flex;
-  position: absolute;
-  top: 255px;
-  left: 15px;
-  right: 15px;
+  flex-direction: column;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding-top: 5px;
+  padding-left: 9px;
+  padding-right: 5px;
 
-  & > p {
-    font-size: 1rem;
-    font-weight: 400;
-
-    @media screen and (max-width: 1150px) {
-      font-size: 0.85rem;
-    }
-
-    @media screen and (max-width: 868px) {
-      font-size: 1rem;
-    }
-
-    @media screen and (max-width: 693px) {
-      font-size: 0.8rem;
-    }
+  @media screen and (max-width: 1150px) {
+    font-size: 0.85rem;
   }
+
+  @media screen and (max-width: 868px) {
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 693px) {
+    font-size: 0.8rem;
+  }
+
+  & > ul {
+    margin-left: 1rem;
+  }
+`
+
+const TechnologiesList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 `

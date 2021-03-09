@@ -38,7 +38,7 @@ const FooterContainer = styled.div`
   margin: 0 35px;
   padding: 2rem calc((100vw - 1300px) / 2);
   color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(very-dark-grey)"};
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   background-color: ${({ isToggled }) =>
     isToggled ? "var(--very-dark-grey)" : "var(--grey)"};
   transition: 0.4s;
@@ -64,7 +64,7 @@ const ArrowContainer = styled(ScrollLink)`
 `
 const Arrow = styled(ArrowDown)`
   color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(very-dark-grey)"};
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transform: rotate(180deg);
   transition: 0.7s;
 

@@ -71,7 +71,15 @@ const HomePage = () => {
               return name.node.title
             })}
           </Title>
-          <ArrowContainer to="aboutme" smooth={true} duration={1000}>
+          <ArrowContainer
+            to="aboutme"
+            smooth={true}
+            duration={1000}
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+            isToggled={isToggled}
+          >
             <Arrow isToggled={isToggled} />
           </ArrowContainer>
         </MainInfo>
@@ -128,7 +136,7 @@ const Name = styled.h1`
   padding: 0 1rem;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3rem, 5vw, 6rem);
   letter-spacing: 3px;
   word-spacing: 9999rem;
 `
@@ -136,7 +144,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-size: clamp(1.2rem, 2vw, 2.3rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};

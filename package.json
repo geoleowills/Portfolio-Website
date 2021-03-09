@@ -29,7 +29,8 @@
     "react-icons": "^3.11.0",
     "react-scroll": "^1.8.1",
     "shortid": "^2.2.16",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "vanilla-tilt": "^1.7.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
