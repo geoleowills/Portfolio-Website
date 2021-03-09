@@ -281,6 +281,10 @@ const CardDescription = styled.div`
     font-size: 0.8rem;
   }
 
+  @media screen and (max-width: 400px) {
+    font-size: 0.65rem;
+  }
+
   & > ul {
     margin-left: 1rem;
   }

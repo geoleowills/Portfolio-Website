@@ -75,9 +75,6 @@ const HomePage = () => {
             to="aboutme"
             smooth={true}
             duration={1000}
-            data-aos="fade-up"
-            data-aos-delay="300"
-            data-aos-duration="1000"
             isToggled={isToggled}
           >
             <Arrow isToggled={isToggled} />

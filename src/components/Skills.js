@@ -18,22 +18,24 @@ const Stats = () => {
   return (
     <StatsContainer isToggled={isToggled}>
       <TargetDiv id="skills"></TargetDiv>
-      <TitleContainer>
-        <TitleIcon />
-        <Heading
-          data-aos="fade-right"
-          data-aos-delay="50"
-          data-aos-duration="1000"
-        >
-          Skills
-        </Heading>
-      </TitleContainer>
-      <Underline
-        data-aos="fade-right"
+      <TitleContainer
+        data-aos="fade-up"
         data-aos-delay="50"
         data-aos-duration="1000"
+      >
+        <TitleIcon />
+        <Heading>Skills</Heading>
+      </TitleContainer>
+      <Underline
+        data-aos="fade-up"
+        data-aos-delay="150"
+        data-aos-duration="1000"
       />
-      <SubTitleContainer>
+      <SubTitleContainer
+        data-aos="fade-up"
+        data-aos-delay="250"
+        data-aos-duration="1000"
+      >
         <SubHeading>Current Skills</SubHeading>
         <p>My current skillset.</p>
       </SubTitleContainer>
@@ -42,7 +44,7 @@ const Stats = () => {
         {CurrentSkillsData.map((item, index) => {
           return (
             <Icon
-              data-aos="fade-right"
+              data-aos="fade-up"
               data-aos-delay="150"
               data-aos-duration="1000"
             >
@@ -60,7 +62,7 @@ const Stats = () => {
         {NearFutureSkillsData.map((item, index) => {
           return (
             <Icon
-              data-aos="fade-right"
+              data-aos="fade-up"
               data-aos-delay="150"
               data-aos-duration="1000"
             >
@@ -78,7 +80,7 @@ const Stats = () => {
         {FutureSkillsData.map((item, index) => {
           return (
             <Icon
-              data-aos="fade-right"
+              data-aos="fade-up"
               data-aos-delay="150"
               data-aos-duration="1000"
             >
