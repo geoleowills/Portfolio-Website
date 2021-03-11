@@ -34,7 +34,7 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 70px);
-  height: 200px;
+  height: 100%;
   margin: 0 35px;
   padding: 2rem calc((100vw - 1300px) / 2);
   color: ${({ isToggled }) =>
@@ -44,9 +44,18 @@ const FooterContainer = styled.div`
   transition: 0.4s;
 `
 
-const ContactInfo = styled.div``
+const ContactInfo = styled.div`
+  padding-bottom: 1rem;
+  & > p {
+    font-size: 0.85rem;
+  }
+`
 
-const SiteInfo = styled.div``
+const SiteInfo = styled.div`
+  & > p {
+    font-size: 0.85rem;
+  }
+`
 
 const Info = styled.div`
   display: flex;

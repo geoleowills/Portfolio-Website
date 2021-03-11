@@ -42,12 +42,12 @@ const AboutMe = () => {
       </TitleContainer>
       <Underline
         data-aos="fade-right"
-        data-aos-delay="50"
+        data-aos-delay="150"
         data-aos-duration="1000"
       />
       <ContentWrapper
         data-aos="fade-right"
-        data-aos-delay="50"
+        data-aos-delay="250"
         data-aos-duration="1000"
       >
         {renderRichText(

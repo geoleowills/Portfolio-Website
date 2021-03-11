@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Aos from "aos"
@@ -8,6 +8,8 @@ import "aos/dist/aos.css"
 import { Context } from "../Context"
 import ModalWindow from "./ModalWindow"
 import CodingIcon from "../assets/svgs/codingIcon.svg"
+import PlayButton from "../assets/svgs/playButton.svg"
+import GitHubLogo from "../assets/svgs/gitHubLogo.svg"
 
 const Projects = () => {
   const { isToggled } = useContext(Context)
@@ -91,28 +93,48 @@ const Projects = () => {
     const projectArray = []
     cardData.allContentfulModalWindow.edges.forEach((item, index) => {
       projectArray.push(
-        <ProjectCard
-          key={index}
-          data-aos="fade-left"
-          data-aos-delay="50"
-          data-aos-duration="1000"
-        >
-          <ProjectImg
-            alt={item.node.title}
-            fluid={item.node.coverPhoto.fluid}
-          />
-
-          <CardTitle>{item.node.heading}</CardTitle>
-          <Button id={index} onClick={handleModalClick}>
-            ▶ Video
-          </Button>
-          <CardDescription>
-            {renderRichText(item.node.description)}{" "}
-            <TechnologiesList>
-              {item.node.technologiesUsed.map((tech, index) => (
-                <React.Fragment>
-                  <li>{tech}</li>
-                  {/* {item.node.technologiesUsed.length !== index + 1 ? (
+        <CardContainer>
+          <CardTitle
+            isToggled={isToggled}
+            data-aos="fade-left"
+            data-aos-delay="250"
+            data-aos-duration="1000"
+          >
+            {item.node.heading}
+          </CardTitle>
+          <ProjectCard
+            key={index}
+            data-aos="fade-left"
+            data-aos-delay="350"
+            data-aos-duration="1000"
+          >
+            <ImgContainer>
+              <ProjectImg
+                alt={item.node.title}
+                fluid={item.node.coverPhoto.fluid}
+                objectFit="cover"
+                objectPosition="0 0"
+              />
+            </ImgContainer>{" "}
+            <VideoButton id={index} type="button" onClick={handleModalClick}>
+              <PlayIcon />
+              Video
+            </VideoButton>
+            <SourceCodeButton
+              href={item.node.githubLink}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <GhLogo />
+              Source Code
+            </SourceCodeButton>
+            <CardDescription>
+              {renderRichText(item.node.description)}{" "}
+              <TechnologiesList>
+                {item.node.technologiesUsed.map((tech, index) => (
+                  <React.Fragment>
+                    <li>{tech}</li>
+                    {/* {item.node.technologiesUsed.length !== index + 1 ? (
                   <Underline />
                 ) : (
                   <span
@@ -121,11 +143,12 @@ const Projects = () => {
                     `}
                   ></span>
                 )} */}
-                </React.Fragment>
-              ))}
-            </TechnologiesList>
-          </CardDescription>
-        </ProjectCard>
+                  </React.Fragment>
+                ))}
+              </TechnologiesList>
+            </CardDescription>
+          </ProjectCard>
+        </CardContainer>
       )
     })
     return projectArray
@@ -146,7 +169,7 @@ const Projects = () => {
         </TitleContainer>
         <Underline
           data-aos="fade-left"
-          data-aos-delay="50"
+          data-aos-delay="150"
           data-aos-duration="1000"
         />
         <ProjectWrapper>{getProjects(cardData)}</ProjectWrapper>
@@ -223,42 +246,36 @@ const ProjectCard = styled.div`
   transition: 0.2s ease;
 `
 const ProjectImg = styled(Img)`
-  height: 40%;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  filter: brightness(70%);
-  transition: 0.4s;
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(100%);
-  }
 `
 
 const CardTitle = styled.h1`
-  display: flex;
-  position: absolute;
-  top: 20px;
-  left: 25px;
-  font-weight: 600;
+  margin-bottom: 15px;
+
+  font-weight: 700;
   font-size: 1.6rem;
+  color: ${({ isToggled }) =>
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  transition: 0.4s;
 `
 
-const Button = styled.div`
+const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 100px;
-  height: 42px;
+  width: 80px;
+  height: 35px;
   background-color: var(--main-pink);
-  top: 220px;
-  left: 17px;
+  top: 227px;
+  left: 15px;
   border-radius: 100px;
   cursor: pointer;
-
-  & > p {
-  }
+  font-size: 0.9rem;
+  color: white;
+  border: 0;
 `
 const CardDescription = styled.div`
   display: flex;
@@ -293,4 +310,47 @@ const CardDescription = styled.div`
 const TechnologiesList = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+`
+
+const ImgContainer = styled.div`
+  width: 100%;
+  height: 40%;
+  display: flex;
+  overflow: hidden;
+`
+
+const PlayIcon = styled(PlayButton)`
+  fill: white;
+  width: 13px;
+  margin-right: 4px;
+`
+const CardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+const SourceCodeButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 135px;
+  height: 35px;
+  background-color: var(--main-pink);
+  top: 227px;
+  left: 105px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 400;
+  border: 0;
+  color: white;
+  text-decoration: none;
+`
+
+const GhLogo = styled(GitHubLogo)`
+  width: 25px;
+
+  margin-right: 5px;
 `

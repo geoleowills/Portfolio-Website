@@ -4,6 +4,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { Context } from "../Context"
 import MailSvg from "../assets/svgs/mail.svg"
+import SendSvg from "../assets/svgs/sendIcon.svg"
 
 const Email = () => {
   const { isToggled } = useContext(Context)
@@ -14,10 +15,18 @@ const Email = () => {
 
   return (
     <ContactContainer id="contact" isToggled={isToggled}>
-      <LeftColumn>
+      <LeftColumn
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
         <MailLogo isToggled={isToggled} />
       </LeftColumn>
-      <RightColumn>
+      <RightColumn
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
         <TitleContainer>
           <Title>Get In Touch</Title>
         </TitleContainer>
@@ -45,8 +54,11 @@ const Email = () => {
             id="message"
             rows="8"
           ></MessageInput>
-
-          <Button type="submit" value="SEND ➤"></Button>
+          <ButtonContainer>
+            {" "}
+            <SendIcon />
+            <Button type="submit" value="SEND"></Button>
+          </ButtonContainer>
         </ContactForm>
       </RightColumn>
     </ContactContainer>
@@ -160,9 +172,15 @@ const MessageInput = styled.textarea`
   background-color: var(--grey);
 `
 
-const Button = styled.input`
+const ButtonContainer = styled.div`
   width: 98px;
   height: 40px;
+  position: relative;
+`
+
+const Button = styled.input`
+  width: 100%;
+  height: 100%;
   border-radius: 30px;
   font-size: 16px;
   font-weight: 500;
@@ -170,4 +188,13 @@ const Button = styled.input`
   background-color: var(--main-pink);
   color: white;
   cursor: pointer;
+  padding-right: 26px;
+`
+
+const SendIcon = styled(SendSvg)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  fill: var(--very-light-grey);
 `
