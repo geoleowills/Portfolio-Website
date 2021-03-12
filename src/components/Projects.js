@@ -16,11 +16,6 @@ const Projects = () => {
   const { modalDisplay, setModalDisplay, setSelectedModal } = useContext(
     Context
   )
-  const [videoUrl, setVideoUrl] = useState(null)
-  const [heading, setHeading] = useState(null)
-  const [description, setDescription] = useState(null)
-  const [technologies, setTechnologies] = useState([])
-  const [gitLink, setGitLink] = useState(null)
 
   const { switchModalDisplay } = useContext(Context)
   useEffect(() => {
@@ -53,36 +48,6 @@ const Projects = () => {
       }
     }
   `)
-  // useEffect(() => {
-  //   cardData.allContentfulModalWindow.edges.forEach(data => {
-  //     if (id === data.node.projectid) {
-  //       setVideoUrl(
-  //         `https://player.vimeo.com/video/${data.node.videoId}?loop=1&title=0&byline=0&portrait=0`
-  //       )
-  //       setHeading(data.node.heading)
-  //       setDescription(renderRichText(data.node.description))
-
-  //       const technologiesList = data.node.technologiesUsed.map(
-  //         (tech, index) => (
-  //           <React.Fragment>
-  //             <li>{tech}</li>
-  //             {data.node.technologiesUsed.length != index + 1 ? (
-  //               <Underline />
-  //             ) : (
-  //               <span
-  //                 css={`
-  //                   display: none;
-  //                 `}
-  //               ></span>
-  //             )}
-  //           </React.Fragment>
-  //         )
-  //       )
-  //       setTechnologies(technologiesList)
-  //       setGitLink(data.node.githubLink)
-  //     }
-  //   })
-  // }, [])
 
   const handleModalClick = e => {
     setSelectedModal(e.target.id)
@@ -129,24 +94,20 @@ const Projects = () => {
               Source Code
             </SourceCodeButton>
             <CardDescription>
-              {renderRichText(item.node.description)}{" "}
+              <h2>Description</h2> <CardUnderline />
+              {renderRichText(item.node.description)}
+            </CardDescription>
+            <TechnologiesContainer>
+              <TechnologiesHeading>Technologies Used</TechnologiesHeading>
+              <CardUnderline />
               <TechnologiesList>
                 {item.node.technologiesUsed.map((tech, index) => (
                   <React.Fragment>
                     <li>{tech}</li>
-                    {/* {item.node.technologiesUsed.length !== index + 1 ? (
-                  <Underline />
-                ) : (
-                  <span
-                    css={`
-                      display: none;
-                    `}
-                  ></span>
-                )} */}
                   </React.Fragment>
                 ))}
               </TechnologiesList>
-            </CardDescription>
+            </TechnologiesContainer>
           </ProjectCard>
         </CardContainer>
       )
@@ -239,7 +200,7 @@ const ProjectWrapper = styled.div`
 const ProjectCard = styled.div`
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 815px;
   background-color: var(--main-pink);
   color: var(--very-light-grey);
   border-radius: 10px;
@@ -268,23 +229,51 @@ const VideoButton = styled.button`
   position: absolute;
   width: 80px;
   height: 35px;
-  background-color: var(--main-pink);
+
   top: 227px;
   left: 15px;
   border-radius: 100px;
   cursor: pointer;
   font-size: 0.9rem;
-  color: white;
+
+  transition: 0.3s;
+  font-weight: 600;
+  fill: var(--very-light-grey);
+
+  background-color: var(--dark-grey);
   border: 0;
+  color: var(--very-light-grey);
+
+  & :hover {
+    background-color: var(--main-pink);
+
+    color: var(--very-light-grey);
+    fill: var(--very-light-grey);
+  }
 `
 const CardDescription = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   padding-top: 5px;
-  padding-left: 9px;
+  padding-left: 0;
   padding-right: 5px;
+
+  & > h2 {
+    padding-bottom: 8px;
+    padding-top: 7px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  & > p {
+    padding-left: 1rem;
+  }
+
+  & > ul > li {
+    padding-left: 1rem;
+  }
 
   @media screen and (max-width: 1150px) {
     font-size: 0.85rem;
@@ -303,24 +292,46 @@ const CardDescription = styled.div`
   }
 
   & > ul {
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
   }
 `
 
 const TechnologiesList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  margin-top: 16px;
+  list-style-type: none;
+  text-align: center;
+  font-weight: 400;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-left: 0;
+  align-items: center;
+  justify-content: center;
+
+  & > li {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 1rem;
+    /* flex: 1;
+    flex-basis: 20%;
+    max-width: 25%; */
+    border: 0;
+    border-radius: 6px;
+    padding: 2px 5px;
+    background-color: var(--dark-grey);
+    color: var(--very-light-grey);
+  }
 `
 
 const ImgContainer = styled.div`
   width: 100%;
-  height: 40%;
+  height: 34%;
   display: flex;
   overflow: hidden;
 `
 
 const PlayIcon = styled(PlayButton)`
-  fill: white;
   width: 13px;
   margin-right: 4px;
 `
@@ -337,20 +348,47 @@ const SourceCodeButton = styled.a`
   position: absolute;
   width: 135px;
   height: 35px;
-  background-color: var(--main-pink);
+
   top: 227px;
   left: 105px;
   border-radius: 100px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 400;
+  background-color: var(--dark-grey);
   border: 0;
-  color: white;
+  color: var(--very-light-grey);
   text-decoration: none;
+  transition: 0.3s;
+  font-weight: 600;
+
+  & :hover {
+    background-color: var(--main-pink);
+    color: var(--very-light-grey);
+  }
 `
 
 const GhLogo = styled(GitHubLogo)`
   width: 25px;
 
   margin-right: 5px;
+`
+
+const TechnologiesContainer = styled.div`
+  font-size: 0.85rem;
+  text-align: center;
+`
+
+const TechnologiesHeading = styled.h2`
+  padding-bottom: 12px;
+  padding-top: 7px;
+  margin-top: 10px;
+  font-weight: 600;
+`
+
+const CardUnderline = styled.div`
+  margin: 0 1rem;
+  margin-bottom: 8px;
+  height: 1px;
+  background-color: white;
 `

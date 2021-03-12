@@ -21,7 +21,7 @@ const Footer = () => {
         </SiteInfo>
       </Info>
       <ArrowContainer to="home" smooth={true} duration={1000}>
-        <Arrow />
+        <Arrow isToggled={isToggled} />
       </ArrowContainer>
     </FooterContainer>
   )

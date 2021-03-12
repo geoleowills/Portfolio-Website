@@ -19,3 +19,4 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `
+// --main-pink: #E98074;
