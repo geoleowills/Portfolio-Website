@@ -109,7 +109,7 @@ const NavLink = styled(ScrollLink)`
   font-size: 0.9rem;
 
   &:hover {
-    color: var(--main-pink);
+    color: orange;
   }
 `
 

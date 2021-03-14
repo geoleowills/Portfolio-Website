@@ -10,6 +10,7 @@ import ModalWindow from "./ModalWindow"
 import CodingIcon from "../assets/svgs/codingIcon.svg"
 import PlayButton from "../assets/svgs/playButton.svg"
 import GitHubLogo from "../assets/svgs/gitHubLogo.svg"
+import BackgroundImage from "gatsby-background-image"
 
 const Projects = () => {
   const { isToggled } = useContext(Context)
@@ -59,40 +60,50 @@ const Projects = () => {
     cardData.allContentfulModalWindow.edges.forEach((item, index) => {
       projectArray.push(
         <CardContainer>
-          <CardTitle
-            isToggled={isToggled}
-            data-aos="fade-left"
-            data-aos-delay="250"
-            data-aos-duration="1000"
-          >
-            {item.node.heading}
-          </CardTitle>
           <ProjectCard
             key={index}
             data-aos="fade-left"
             data-aos-delay="350"
             data-aos-duration="1000"
           >
-            <ImgContainer>
-              <ProjectImg
+            <CoverImage fluid={item.node.coverPhoto.fluid}>
+              <BlackOverlay>
+                {" "}
+                <CardTitle
+                  isToggled={isToggled}
+                  data-aos="fade-left"
+                  data-aos-delay="250"
+                  data-aos-duration="1000"
+                >
+                  {" "}
+                  {item.node.heading}
+                </CardTitle>
+                {/* <ProjectImg
                 alt={item.node.title}
                 fluid={item.node.coverPhoto.fluid}
                 objectFit="cover"
                 objectPosition="0 0"
-              />
-            </ImgContainer>{" "}
-            <VideoButton id={index} type="button" onClick={handleModalClick}>
-              <PlayIcon />
-              Video
-            </VideoButton>
-            <SourceCodeButton
-              href={item.node.githubLink}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <GhLogo />
-              Source Code
-            </SourceCodeButton>
+              /> */}{" "}
+                <VideoButton
+                  id={index}
+                  type="button"
+                  onClick={handleModalClick}
+                >
+                  <PlayIcon />
+                  Video
+                </VideoButton>
+                <SourceCodeButton
+                  href={item.node.githubLink}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {" "}
+                  <GhLogo />
+                  Source Code
+                </SourceCodeButton>
+              </BlackOverlay>
+            </CoverImage>
+
             <CardDescription>
               <h2>Description</h2> <CardUnderline />
               {renderRichText(item.node.description)}
@@ -198,13 +209,17 @@ const ProjectWrapper = styled.div`
 `
 
 const ProjectCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   width: 100%;
   height: 815px;
-  background-color: var(--main-pink);
-  color: var(--very-light-grey);
+  background-color: var(--very-light-grey);
+  color: var(--very-dark-grey);
   border-radius: 10px;
   transition: 0.2s ease;
+  box-shadow: 3px 3px 10px #999999;
 `
 const ProjectImg = styled(Img)`
   width: 100%;
@@ -214,41 +229,37 @@ const ProjectImg = styled(Img)`
 
 const CardTitle = styled.h1`
   margin-bottom: 15px;
+  margin-top: 15px;
 
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  font-weight: 600;
+  font-size: 2rem;
   transition: 0.4s;
+  color: var(--very-light-grey);
 `
 
 const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  width: 80px;
-  height: 35px;
 
-  top: 227px;
-  left: 15px;
-  border-radius: 100px;
+  width: 135px;
+  height: 35px;
+  margin-bottom: 10px;
+
+  border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
 
   transition: 0.3s;
   font-weight: 600;
-  fill: var(--very-light-grey);
+  fill: var(--very-dark-grey);
 
-  background-color: var(--dark-grey);
+  background-color: #669d89;
   border: 0;
   color: var(--very-light-grey);
 
   & :hover {
-    background-color: var(--main-pink);
-
-    color: var(--very-light-grey);
-    fill: var(--very-light-grey);
+    filter: brightness(110%);
   }
 `
 const CardDescription = styled.div`
@@ -257,8 +268,8 @@ const CardDescription = styled.div`
   font-size: 0.85rem;
   font-weight: 400;
   padding-top: 5px;
-  padding-left: 0;
-  padding-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   & > h2 {
     padding-bottom: 8px;
@@ -268,11 +279,11 @@ const CardDescription = styled.div`
   }
 
   & > p {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
   }
 
   & > ul > li {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
   }
 
   @media screen and (max-width: 1150px) {
@@ -324,16 +335,10 @@ const TechnologiesList = styled.ul`
   }
 `
 
-const ImgContainer = styled.div`
-  width: 100%;
-  height: 34%;
-  display: flex;
-  overflow: hidden;
-`
-
 const PlayIcon = styled(PlayButton)`
   width: 13px;
   margin-right: 4px;
+  fill: var(--very-light-grey);
 `
 const CardContainer = styled.div`
   display: flex;
@@ -345,26 +350,24 @@ const SourceCodeButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+
   width: 135px;
   height: 35px;
 
-  top: 227px;
-  left: 105px;
-  border-radius: 100px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 400;
-  background-color: var(--dark-grey);
+  background-color: #669d89;
   border: 0;
   color: var(--very-light-grey);
+
   text-decoration: none;
   transition: 0.3s;
   font-weight: 600;
 
   & :hover {
-    background-color: var(--main-pink);
-    color: var(--very-light-grey);
+    filter: brightness(110%);
   }
 `
 
@@ -375,8 +378,10 @@ const GhLogo = styled(GitHubLogo)`
 `
 
 const TechnologiesContainer = styled.div`
+  width: 100%;
   font-size: 0.85rem;
   text-align: center;
+  padding: 0 20px;
 `
 
 const TechnologiesHeading = styled.h2`
@@ -390,5 +395,31 @@ const CardUnderline = styled.div`
   margin: 0 1rem;
   margin-bottom: 8px;
   height: 1px;
-  background-color: white;
+  background-color: var(--grey);
+`
+
+const Buttons = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
+const CoverImage = styled(BackgroundImage)`
+  width: 100%;
+  height: 30%;
+  background-size: cover;
+  border-radius: 10px;
+  background-position: top center;
+`
+
+const BlackOverlay = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-direction: column;
 `

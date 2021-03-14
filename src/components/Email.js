@@ -99,7 +99,7 @@ const LeftColumn = styled.div`
 const MailLogo = styled(MailSvg)`
   width: 100%;
   max-width: 280px;
-  color: var(--main-pink);
+  color: #669d89;
 `
 
 const RightColumn = styled.div`
@@ -144,7 +144,7 @@ const NameInput = styled.input`
   padding-left: 15px;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 17px;
+  border-radius: 10px;
   border: 0;
   background-color: var(--grey);
 `
@@ -156,7 +156,7 @@ const EmailInput = styled.input`
   padding-left: 15px;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 17px;
+  border-radius: 10px;
   border: 0;
   background-color: var(--grey);
 `
@@ -167,7 +167,7 @@ const MessageInput = styled.textarea`
   padding: 10px 0 0 15px;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 17px;
+  border-radius: 10px;
   border: 0;
   background-color: var(--grey);
 `
@@ -181,11 +181,11 @@ const ButtonContainer = styled.div`
 const Button = styled.input`
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: 500;
   border: 0;
-  background-color: var(--main-pink);
+  background-color: #669d89;
   color: white;
   cursor: pointer;
   padding-right: 26px;

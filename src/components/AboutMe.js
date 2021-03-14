@@ -80,7 +80,7 @@ const TitleContainer = styled.div`
 `
 
 const Icon = styled(ProfileIcon)`
-  color: var(--title-icon);
+  color: orange;
   font-size: 1.85rem;
 `
 

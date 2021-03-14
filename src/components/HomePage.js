@@ -9,6 +9,7 @@ import "aos/dist/aos.css"
 import MePng from "../assets/images/me.png"
 import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
+import Tilt from "react-parallax-tilt"
 
 const HomePage = () => {
   const { isToggled } = useContext(Context)
@@ -26,7 +27,8 @@ const HomePage = () => {
       allContentfulHomepage {
         edges {
           node {
-            name
+            firstName
+            lastName
             title
           }
         }
@@ -49,37 +51,46 @@ const HomePage = () => {
           <br />
           my site!
         </SpeechBubbleText>
+        <TiltContainer perspective={500}>
+          <MainInfo>
+            {/* <MyInfo> */}
 
-        <MainInfo>
-          <Name
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            isToggled={isToggled}
-          >
-            {myInfo.allContentfulHomepage.edges.map(name => {
-              return name.node.name
-            })}
-          </Name>
-          <Title
-            data-aos="fade-up"
-            data-aos-delay="200"
-            data-aos-duration="1000"
-            isToggled={isToggled}
-          >
-            {myInfo.allContentfulHomepage.edges.map(name => {
-              return name.node.title
-            })}
-          </Title>
-          <ArrowContainer
-            to="aboutme"
-            smooth={true}
-            duration={1000}
-            isToggled={isToggled}
-          >
-            <Arrow isToggled={isToggled} />
-          </ArrowContainer>
-        </MainInfo>
+            <Name
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+              isToggled={isToggled}
+            >
+              {myInfo.allContentfulHomepage.edges.map(name => {
+                return name.node.firstName
+              })}{" "}
+              <br />
+              {myInfo.allContentfulHomepage.edges.map(name => {
+                return name.node.lastName
+              })}
+            </Name>
+
+            <Title
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="1000"
+              isToggled={isToggled}
+            >
+              {myInfo.allContentfulHomepage.edges.map(name => {
+                return name.node.title
+              })}
+            </Title>
+            {/* </MyInfo> */}
+            <ArrowContainer
+              to="aboutme"
+              smooth={true}
+              duration={1000}
+              isToggled={isToggled}
+            >
+              <Arrow isToggled={isToggled} />
+            </ArrowContainer>
+          </MainInfo>
+        </TiltContainer>
       </HomePageContent>
     </HomepageContainer>
   )
@@ -110,38 +121,40 @@ const HomePageContent = styled.div`
   background: ${({ isToggled }) =>
     isToggled
       ? "linear-gradient(90deg, var(--main-pink) 50%, var(--dark-grey) 50%)"
-      : "linear-gradient(90deg, var(--main-pink) 50%, var(--light-grey) 50%)"};
+      : "linear-gradient(90deg, var(--light-grey) 50%, var(--light-grey) 50%)"};
   z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const MainInfo = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
-  height: 100vh;
-  max-height: 100%;
-  padding: 0;
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.1;
-  color: var(--very-light-grey);
+  transform: translateZ(70px);
 `
 
 const Name = styled.h1`
   margin-bottom: 1.5rem;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+  text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  font-size: clamp(3rem, 5vw, 6rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   letter-spacing: 3px;
-  word-spacing: 9999rem;
+  /* width: 1px; */
+  font-weight: 600;
+  color: #669d89;
 `
 
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(1.2rem, 2vw, 2.3rem);
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
@@ -150,13 +163,13 @@ const Title = styled.p`
 
 const ArrowContainer = styled(ScrollLink)`
   display: flex;
-  margin-top: 100px;
-  cursor: pointer;
-  transition: 0.7s;
+  /* width: 50%;
+  height: 100%; */
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 100px; */
 
-  &:hover {
-    transform: rotate(365deg);
-  }
+  transition: 0.7s;
 `
 
 const Arrow = styled(ArrowDown)`
@@ -164,6 +177,14 @@ const Arrow = styled(ArrowDown)`
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   z-index: 10000;
+  transition: 0.4s;
+  cursor: pointer;
+  /* transform: rotate(-0.5deg); */
+
+  & :hover {
+    color: orange;
+    transform: rotate(360deg);
+  }
 `
 
 const MeImg = styled.img`
@@ -175,9 +196,10 @@ const MeImg = styled.img`
 const SpeechBubbleText = styled.p`
   position: absolute;
   bottom: 240px;
-  left: 150px;
+  left: 151px;
   text-align: center;
   font-weight: 600;
+  color: var(--very-dark-grey);
 `
 
 const TextBubble = styled(SpeechBubble)`
@@ -185,5 +207,42 @@ const TextBubble = styled(SpeechBubble)`
   width: 150px;
   bottom: 200px;
   left: 125px;
-  fill: #f8f8f8;
+  fill: #669d89;
+`
+
+const MyInfo = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+`
+
+const TiltContainer = styled(Tilt)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 70px;
+  border-radius: 50px;
+  border: 2px solid grey;
+  max-width: 490px;
+  margin-top: -35px;
+  /* 
+height: 100vh;
+max-height: 100%; */
+  /* padding: 70px calc((100vw - 1300px) / 2); */
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--very-light-grey);
+  /* padding-bottom: 100px; */
+  background-color: var(--grey);
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
+
+  @media screen and (max-width: 1600px) {
+    /* padding: 70px 100px 70px 100px; */
+  }
 `
