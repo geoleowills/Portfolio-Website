@@ -220,6 +220,7 @@ const ProjectCard = styled.div`
   border-radius: 10px;
   transition: 0.2s ease;
   box-shadow: 3px 3px 10px #999999;
+  overflow: hidden;
 `
 const ProjectImg = styled(Img)`
   width: 100%;
@@ -260,6 +261,7 @@ const VideoButton = styled.button`
 
   & :hover {
     filter: brightness(110%);
+    transform: translateY(-3px);
   }
 `
 const CardDescription = styled.div`
@@ -282,8 +284,8 @@ const CardDescription = styled.div`
     /* padding-left: 1rem; */
   }
 
-  & > ul > li {
-    /* padding-left: 1rem; */
+  & > ul {
+    padding-left: 1rem;
   }
 
   @media screen and (max-width: 1150px) {
@@ -345,6 +347,7 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border-radius: 10px;
 `
 const SourceCodeButton = styled.a`
   display: flex;
@@ -368,6 +371,7 @@ const SourceCodeButton = styled.a`
 
   & :hover {
     filter: brightness(110%);
+    transform: translateY(-3px);
   }
 `
 
@@ -410,6 +414,7 @@ const CoverImage = styled(BackgroundImage)`
   width: 100%;
   height: 30%;
   background-size: cover;
+  overflow: hidden;
   border-radius: 10px;
   background-position: top center;
 `
@@ -422,4 +427,5 @@ const BlackOverlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   flex-direction: column;
+  border-radius: 10px;
 `

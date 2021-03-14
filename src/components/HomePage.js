@@ -105,6 +105,7 @@ const HomepageContainer = styled.div`
   margin-top: 35px;
   color: var(--very-light-grey);
   transition: 0.4s;
+  /* overflow: hidden; */
 `
 
 const TargetDiv = styled.div`
@@ -119,13 +120,14 @@ const HomePageContent = styled.div`
   max-height: 100%;
   margin: 0 35px;
   background: ${({ isToggled }) =>
-    isToggled
-      ? "linear-gradient(90deg, var(--main-pink) 50%, var(--dark-grey) 50%)"
-      : "linear-gradient(90deg, var(--light-grey) 50%, var(--light-grey) 50%)"};
+    isToggled ? "var(--dark-grey)" : "var(--light-grey)"};
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 1000px) {
+    align-items: flex-start;
+  }
 `
 
 const MainInfo = styled.div`
@@ -144,7 +146,7 @@ const Name = styled.h1`
   text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  font-size: clamp(3rem, 5vw, 4rem);
+  font-size: clamp(0.5rem, 5vw, 4rem);
   letter-spacing: 3px;
   /* width: 1px; */
   font-weight: 600;
@@ -154,7 +156,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-size: clamp(0.5rem, 2vw, 1.7rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
@@ -196,10 +198,12 @@ const MeImg = styled.img`
 const SpeechBubbleText = styled.p`
   position: absolute;
   bottom: 240px;
-  left: 151px;
+  left: 148px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--very-dark-grey);
+
+  letter-spacing: 1px;
 `
 
 const TextBubble = styled(SpeechBubble)`
@@ -229,20 +233,19 @@ const TiltContainer = styled(Tilt)`
   border: 2px solid grey;
   max-width: 490px;
   margin-top: -35px;
-  /* 
-height: 100vh;
-max-height: 100%; */
-  /* padding: 70px calc((100vw - 1300px) / 2); */
+
   text-align: center;
   font-weight: bold;
   line-height: 1.1;
   color: var(--very-light-grey);
-  /* padding-bottom: 100px; */
+
   background-color: var(--grey);
   transform-style: preserve-3d;
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 
-  @media screen and (max-width: 1600px) {
-    /* padding: 70px 100px 70px 100px; */
+  @media screen and (max-width: 1000px) {
+    margin-top: 35px;
+    padding: 55px;
+    padding-top: 65px;
   }
 `
