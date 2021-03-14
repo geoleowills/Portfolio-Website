@@ -146,7 +146,7 @@ const Name = styled.h1`
   text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  font-size: clamp(0.5rem, 5vw, 4rem);
+  font-size: clamp(1.9rem, 5vw, 4rem);
   letter-spacing: 3px;
   /* width: 1px; */
   font-weight: 600;
@@ -156,7 +156,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(0.5rem, 2vw, 1.7rem);
+  font-size: clamp(0.8rem, 2vw, 1.7rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
@@ -245,7 +245,7 @@ const TiltContainer = styled(Tilt)`
 
   @media screen and (max-width: 1000px) {
     margin-top: 35px;
-    padding: 55px;
+    padding: 45px;
     padding-top: 65px;
   }
 `
