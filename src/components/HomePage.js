@@ -119,14 +119,20 @@ const HomePageContent = styled.div`
   width: calc(100% - 70px);
   max-height: 100%;
   margin: 0 35px;
-  background: ${({ isToggled }) =>
-    isToggled ? "var(--dark-grey)" : "var(--light-grey)"};
+  background: linear-gradient(
+    135deg,
+    #669d89 0,
+    #669d89 15%,
+    var(--light-grey) 15%,
+    var(--light-grey) 85%,
+    #669d89 85%
+  );
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 1000px) {
-    align-items: flex-start;
+    /* align-items: flex-start; */
   }
 `
 
@@ -244,8 +250,8 @@ const TiltContainer = styled(Tilt)`
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 
   @media screen and (max-width: 1000px) {
-    margin-top: 35px;
+    /* margin-top: 35px;
     padding: 45px;
-    padding-top: 65px;
+    padding-top: 65px; */
   }
 `

@@ -214,13 +214,14 @@ const ProjectCard = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 815px;
+  height: 100%;
   background-color: var(--very-light-grey);
   color: var(--very-dark-grey);
   border-radius: 10px;
   transition: 0.2s ease;
   box-shadow: 3px 3px 10px #999999;
   overflow: hidden;
+  padding-bottom: 20px;
 `
 const ProjectImg = styled(Img)`
   width: 100%;
@@ -412,7 +413,7 @@ const Buttons = styled.div`
 
 const CoverImage = styled(BackgroundImage)`
   width: 100%;
-  height: 30%;
+  height: 250px;
   background-size: cover;
   overflow: hidden;
   border-radius: 10px;
@@ -428,4 +429,7 @@ const BlackOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   flex-direction: column;
   border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  padding-top: 5px;
 `
