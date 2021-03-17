@@ -215,7 +215,7 @@ const SpeechBubbleText = styled.p`
   letter-spacing: 1px;
 
   @media screen and (max-width: 1000px) {
-    bottom: 152px;
+    bottom: 135px;
   }
 `
 
@@ -227,7 +227,7 @@ const TextBubble = styled(SpeechBubble)`
   fill: #669d89;
 
   @media screen and (max-width: 1000px) {
-    bottom: 115px;
+    bottom: 98px;
   }
 `
 
@@ -263,5 +263,6 @@ const TiltContainer = styled(Tilt)`
   @media screen and (max-width: 1000px) {
     padding: 45px;
     padding-top: 50px;
+    margin-top: -100px;
   }
 `
