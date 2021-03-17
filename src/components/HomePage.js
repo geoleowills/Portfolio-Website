@@ -105,7 +105,7 @@ const HomepageContainer = styled.div`
   margin-top: 35px;
   color: var(--very-light-grey);
   transition: 0.4s;
-  /* overflow: hidden; */
+  overflow: hidden;
 `
 
 const TargetDiv = styled.div`
@@ -122,10 +122,10 @@ const HomePageContent = styled.div`
   background: linear-gradient(
     135deg,
     #669d89 0,
-    #669d89 15%,
-    var(--light-grey) 15%,
-    var(--light-grey) 85%,
-    #669d89 85%
+    #669d89 10%,
+    var(--light-grey) 10%,
+    var(--light-grey) 90%,
+    #669d89 90%
   );
   z-index: 3;
   display: flex;
@@ -152,7 +152,7 @@ const Name = styled.h1`
   text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  font-size: clamp(1.9rem, 5vw, 4rem);
+  font-size: clamp(1.9rem, 4vw, 4rem);
   letter-spacing: 3px;
   /* width: 1px; */
   font-weight: 600;
@@ -162,7 +162,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(0.8rem, 2vw, 1.7rem);
+  font-size: clamp(0.8rem, 1.8vw, 1.7rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
@@ -199,6 +199,10 @@ const MeImg = styled.img`
   position: absolute;
   bottom: 35px;
   left: -80px;
+
+  @media screen and (max-width: 1000px) {
+    bottom: -45px;
+  }
 `
 
 const SpeechBubbleText = styled.p`
@@ -208,8 +212,11 @@ const SpeechBubbleText = styled.p`
   text-align: center;
   font-weight: 400;
   color: var(--very-dark-grey);
-
   letter-spacing: 1px;
+
+  @media screen and (max-width: 1000px) {
+    bottom: 152px;
+  }
 `
 
 const TextBubble = styled(SpeechBubble)`
@@ -218,6 +225,10 @@ const TextBubble = styled(SpeechBubble)`
   bottom: 200px;
   left: 125px;
   fill: #669d89;
+
+  @media screen and (max-width: 1000px) {
+    bottom: 115px;
+  }
 `
 
 const MyInfo = styled.div`
@@ -250,8 +261,7 @@ const TiltContainer = styled(Tilt)`
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 
   @media screen and (max-width: 1000px) {
-    /* margin-top: 35px;
     padding: 45px;
-    padding-top: 65px; */
+    padding-top: 50px;
   }
 `
