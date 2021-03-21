@@ -63,9 +63,9 @@ const HomePage = () => {
             {/* <MyInfo> */}
 
             <Name
-              // data-aos="fade-up"
-              // data-aos-delay="50"
-              // data-aos-duration="1000"
+              data-aos="fade-up"
+              data-aos-delay="50"
+              data-aos-duration="1000"
               isToggled={isToggled}
             >
               {myInfo.allContentfulHomepage.edges.map(name => {
@@ -78,9 +78,9 @@ const HomePage = () => {
             </Name>
 
             <Title
-              // data-aos="fade-up"
-              // data-aos-delay="200"
-              // data-aos-duration="1000"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="1000"
               isToggled={isToggled}
             >
               {myInfo.allContentfulHomepage.edges.map(name => {
