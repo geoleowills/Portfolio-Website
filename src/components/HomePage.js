@@ -262,7 +262,7 @@ const TiltContainer = styled(Tilt)`
   flex-direction: column;
   padding: 70px;
   border-radius: 50px;
-  /* border: 2px solid grey; */
+  border: 2px solid grey;
   max-width: 490px;
   margin-top: -35px;
 
@@ -275,8 +275,6 @@ const TiltContainer = styled(Tilt)`
     isToggled ? "var(--main-pink)" : "var(--grey)"};
   transform-style: preserve-3d;
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 
   @media screen and (max-width: 1000px) {
     padding: 45px;
