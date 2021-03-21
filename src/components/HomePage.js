@@ -10,6 +10,7 @@ import MePng from "../assets/images/me.png"
 import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
 import Tilt from "react-parallax-tilt"
+import Typing from "react-typing-animation"
 
 const HomePage = () => {
   const { isToggled } = useContext(Context)
@@ -42,16 +43,18 @@ const HomePage = () => {
       <HomePageContent isToggled={isToggled} key={getRandomKey()}>
         <MeImg src={MePng} width={250} />
         <TextBubble />
-        <SpeechBubbleText>
-          Hi,
-          <br />
-          I'm George.
-          <br />
-          Welcome to
-          <br />
-          my site!
+        <SpeechBubbleText isToggled={isToggled}>
+          <Typing>
+            Hi,
+            <br />
+            I'm George.
+            <br />
+            Welcome to
+            <br />
+            my site!
+          </Typing>
         </SpeechBubbleText>
-        <TiltContainer perspective={500}>
+        <TiltContainer perspective={500} isToggled={isToggled}>
           <MainInfo>
             {/* <MyInfo> */}
 
@@ -80,7 +83,7 @@ const HomePage = () => {
                 return name.node.title
               })}
             </Title>
-            {/* </MyInfo> */}
+
             <ArrowContainer
               to="aboutme"
               smooth={true}
@@ -119,14 +122,21 @@ const HomePageContent = styled.div`
   width: calc(100% - 70px);
   max-height: 100%;
   margin: 0 35px;
-  background: linear-gradient(
+
+  /* background: linear-gradient(
     135deg,
     #669d89 0,
     #669d89 10%,
     var(--light-grey) 10%,
     var(--light-grey) 90%,
     #669d89 90%
-  );
+  ); */
+
+  background: ${({ isToggled }) =>
+    isToggled
+      ? "linear-gradient(135deg, var(--main-pink) 0, var(--main-pink) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-pink) 90%)"
+      : "linear-gradient(135deg, var(--main-pink) 0, var(--main-pink) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-pink) 90%)"};
+
   z-index: 3;
   display: flex;
   align-items: center;
@@ -151,12 +161,12 @@ const Name = styled.h1`
   /* padding: 0 1rem; */
   text-align: center;
   color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+    isToggled ? "var(--very-light-grey)" : "var(--main-pink)"};
   font-size: clamp(1.9rem, 4vw, 4rem);
   letter-spacing: 3px;
   /* width: 1px; */
   font-weight: 600;
-  color: #669d89;
+  /* text-shadow: 4px 4px 15px grey; */
 `
 
 const Title = styled.p`
@@ -211,7 +221,8 @@ const SpeechBubbleText = styled.p`
   left: 148px;
   text-align: center;
   font-weight: 400;
-  color: var(--very-dark-grey);
+  color: ${({ isToggled }) =>
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   letter-spacing: 1px;
 
   @media screen and (max-width: 1000px) {
@@ -224,7 +235,7 @@ const TextBubble = styled(SpeechBubble)`
   width: 150px;
   bottom: 200px;
   left: 125px;
-  fill: #669d89;
+  fill: orange;
 
   @media screen and (max-width: 1000px) {
     bottom: 98px;
@@ -247,7 +258,7 @@ const TiltContainer = styled(Tilt)`
   flex-direction: column;
   padding: 70px;
   border-radius: 50px;
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
   max-width: 490px;
   margin-top: -35px;
 
@@ -256,7 +267,8 @@ const TiltContainer = styled(Tilt)`
   line-height: 1.1;
   color: var(--very-light-grey);
 
-  background-color: var(--grey);
+  background-color: ${({ isToggled }) =>
+    isToggled ? "var(--main-pink)" : "var(--grey)"};
   transform-style: preserve-3d;
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 

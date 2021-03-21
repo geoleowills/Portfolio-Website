@@ -99,7 +99,7 @@ const LeftColumn = styled.div`
 const MailLogo = styled(MailSvg)`
   width: 100%;
   max-width: 280px;
-  color: #669d89;
+  color: var(--main-pink);
 `
 
 const RightColumn = styled.div`
@@ -185,10 +185,15 @@ const Button = styled.input`
   font-size: 16px;
   font-weight: 500;
   border: 0;
-  background-color: #669d89;
+  background-color: var(--main-pink);
   color: white;
   cursor: pointer;
   padding-right: 26px;
+  transition: 0.4s;
+
+  & :hover {
+    background-color: orange;
+  }
 `
 
 const SendIcon = styled(SendSvg)`

@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     --grey: #ebebeb;
     --dark-grey: #474747;
     --very-dark-grey: #292929;
-    --main-pink: #E98074;
+    --main-pink: #14213d;
     --title-icon: orange;
   }
 

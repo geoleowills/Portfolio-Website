@@ -221,7 +221,7 @@ const ProjectCard = styled.div`
   transition: 0.2s ease;
   box-shadow: 3px 3px 10px #999999;
   overflow: hidden;
-  padding-bottom: 20px;
+  padding-bottom: 20 px;
 `
 const ProjectImg = styled(Img)`
   width: 100%;
@@ -256,7 +256,7 @@ const VideoButton = styled.button`
   font-weight: 600;
   fill: var(--very-dark-grey);
 
-  background-color: #669d89;
+  background-color: var(--main-pink);
   border: 0;
   color: var(--very-light-grey);
 
@@ -362,7 +362,7 @@ const SourceCodeButton = styled.a`
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 400;
-  background-color: #669d89;
+  background-color: var(--main-pink);
   border: 0;
   color: var(--very-light-grey);
 
