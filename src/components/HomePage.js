@@ -44,15 +44,15 @@ const HomePage = () => {
         <MeImg src={MePng} width={250} />
         <TextBubble />
         <SpeechBubbleText isToggled={isToggled}>
-          <Typing>
-            Hi,
-            <br />
-            I'm George.
-            <br />
-            Welcome to
-            <br />
-            my site!
-          </Typing>
+          {/* <Typing> */}
+          Hi,
+          <br />
+          I'm George.
+          <br />
+          Welcome to
+          <br />
+          my site!
+          {/* </Typing> */}
         </SpeechBubbleText>
         <TiltContainer perspective={500} isToggled={isToggled}>
           <MainInfo>
@@ -108,7 +108,7 @@ const HomepageContainer = styled.div`
   margin-top: 35px;
   color: var(--very-light-grey);
   transition: 0.4s;
-  /* overflow: hidden; */
+  overflow: hidden;
 `
 
 const TargetDiv = styled.div`
@@ -265,7 +265,6 @@ const TiltContainer = styled(Tilt)`
   text-align: center;
   font-weight: bold;
   line-height: 1.1;
-  color: var(--very-light-grey);
 
   background-color: ${({ isToggled }) =>
     isToggled ? "var(--main-pink)" : "var(--grey)"};
