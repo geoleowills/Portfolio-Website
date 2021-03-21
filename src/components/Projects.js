@@ -261,8 +261,9 @@ const VideoButton = styled.button`
   color: var(--very-light-grey);
 
   & :hover {
-    filter: brightness(110%);
-    transform: translateY(-3px);
+    /* filter: brightness(110%);
+    transform: translateY(-3px); */
+    background-color: orange;
   }
 `
 const CardDescription = styled.div`
@@ -371,8 +372,9 @@ const SourceCodeButton = styled.a`
   font-weight: 600;
 
   & :hover {
-    filter: brightness(110%);
-    transform: translateY(-3px);
+    /* filter: brightness(110%);
+    transform: translateY(-3px); */
+    background-color: orange;
   }
 `
 
