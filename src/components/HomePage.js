@@ -54,7 +54,11 @@ const HomePage = () => {
             my site!
           </Typing>
         </SpeechBubbleText>
-        <TiltContainer perspective={500} isToggled={isToggled}>
+        <TiltContainer
+          perspective={500}
+          isToggled={isToggled}
+          key={getRandomKey()}
+        >
           <MainInfo>
             {/* <MyInfo> */}
 
