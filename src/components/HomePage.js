@@ -11,6 +11,7 @@ import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
 import Tilt from "react-parallax-tilt"
 import Typing from "react-typing-animation"
+import { Pace, WindupChildren } from "windups"
 
 const HomePage = () => {
   const { isToggled } = useContext(Context)
@@ -43,17 +44,24 @@ const HomePage = () => {
       <HomePageContent isToggled={isToggled} key={getRandomKey()}>
         <MeImg src={MePng} width={250} />
         <TextBubble />
+        {/* <Linebreaker width={300}> */}{" "}
         <SpeechBubbleText isToggled={isToggled}>
           {/* <Typing> */}
-          Hi,
-          <br />
-          I'm George.
-          <br />
-          Welcome to
-          <br />
-          my site!
+          <WindupChildren>
+            <Pace ms={75}>
+              Hi,
+              <br />
+              I'm George.
+              <br />
+              Welcome to
+              <br />
+              my site!
+            </Pace>
+          </WindupChildren>
+
           {/* </Typing> */}
         </SpeechBubbleText>
+        {/* </Linebreaker> */}
         <TiltContainer perspective={500} isToggled={isToggled}>
           <MainInfo>
             {/* <MyInfo> */}
