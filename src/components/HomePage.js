@@ -54,11 +54,7 @@ const HomePage = () => {
             my site!
           </Typing>
         </SpeechBubbleText>
-        <TiltContainer
-          perspective={500}
-          isToggled={isToggled}
-          key={getRandomKey()}
-        >
+        <TiltContainer perspective={500} isToggled={isToggled}>
           <MainInfo>
             {/* <MyInfo> */}
 
@@ -112,7 +108,7 @@ const HomepageContainer = styled.div`
   margin-top: 35px;
   color: var(--very-light-grey);
   transition: 0.4s;
-  overflow: hidden;
+  /* overflow: hidden; */
 `
 
 const TargetDiv = styled.div`
@@ -262,7 +258,7 @@ const TiltContainer = styled(Tilt)`
   flex-direction: column;
   padding: 70px;
   border-radius: 50px;
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
   max-width: 490px;
   margin-top: -35px;
 
