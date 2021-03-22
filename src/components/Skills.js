@@ -54,7 +54,11 @@ const Stats = () => {
           )
         })}
       </Wrapper>
-      <SubTitleContainer>
+      <SubTitleContainer
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
         <SubHeading>Soon Plan To Explore</SubHeading>
         <p>Skills and technologies I plan to explore in the coming months.</p>
       </SubTitleContainer>
@@ -72,7 +76,11 @@ const Stats = () => {
           )
         })}
       </Wrapper>
-      <SubTitleContainer>
+      <SubTitleContainer
+        data-aos="fade-up"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
         <SubHeading>Long Term Skill Goals</SubHeading>
         <p>Skills and technologies I plan to explore in future.</p>
       </SubTitleContainer>

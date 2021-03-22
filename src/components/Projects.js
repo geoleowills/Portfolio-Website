@@ -71,19 +71,13 @@ const Projects = () => {
                 {" "}
                 <CardTitle
                   isToggled={isToggled}
-                  data-aos="fade-left"
-                  data-aos-delay="250"
-                  data-aos-duration="1000"
+                  // data-aos="fade-left"
+                  // data-aos-delay="400"
+                  // data-aos-duration="1000"
                 >
                   {" "}
                   {item.node.heading}
                 </CardTitle>
-                {/* <ProjectImg
-                alt={item.node.title}
-                fluid={item.node.coverPhoto.fluid}
-                objectFit="cover"
-                objectPosition="0 0"
-              /> */}{" "}
                 <VideoButton
                   id={index}
                   type="button"
@@ -221,7 +215,7 @@ const ProjectCard = styled.div`
   transition: 0.2s ease;
   box-shadow: 3px 3px 10px #999999;
   overflow: hidden;
-  padding-bottom: 20 px;
+  padding-bottom: 20px;
 `
 const ProjectImg = styled(Img)`
   width: 100%;
@@ -252,7 +246,7 @@ const VideoButton = styled.button`
   cursor: pointer;
   font-size: 0.9rem;
 
-  transition: 0.3s;
+  transition: 0.4s;
   font-weight: 600;
   fill: var(--very-dark-grey);
 
@@ -368,7 +362,7 @@ const SourceCodeButton = styled.a`
   color: var(--very-light-grey);
 
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.4s;
   font-weight: 600;
 
   & :hover {

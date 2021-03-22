@@ -94,14 +94,14 @@ const DropdownLink = styled(ScrollLink)`
   align-items: center;
   justify-content: center;
   color: var(--very-light-grey);
-  transition: 0.2s ease-in-out;
+  transition: 0.4s ease-in-out;
   font-size: 1.5rem;
   text-decoration: none;
   list-style: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--main-pink);
+    color: orange;
   }
 `
 
@@ -114,9 +114,9 @@ const HomeLink = styled(GatsbyLink)`
   text-decoration: none;
   list-style: none;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.4s;
 
   &:hover {
-    color: var(--main-pink);
+    color: orange;
   }
 `

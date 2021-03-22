@@ -83,7 +83,7 @@ const HomePage = () => {
 
             <Title
               data-aos="fade-up"
-              data-aos-delay="200"
+              data-aos-delay="150"
               data-aos-duration="1000"
               isToggled={isToggled}
             >
@@ -97,6 +97,9 @@ const HomePage = () => {
               smooth={true}
               duration={1000}
               isToggled={isToggled}
+              data-aos="fade-up"
+              data-aos-delay="250"
+              data-aos-duration="1000"
             >
               <Arrow isToggled={isToggled} />
             </ArrowContainer>
@@ -170,7 +173,7 @@ const Name = styled.h1`
   text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--main-pink)"};
-  font-size: clamp(1.9rem, 4vw, 4rem);
+  font-size: clamp(1.9rem, 3.5vw, 3.5rem);
   letter-spacing: 3px;
   /* width: 1px; */
   font-weight: 600;
@@ -180,7 +183,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(0.8rem, 1.8vw, 1.7rem);
+  font-size: clamp(0.8rem, 1.65vw, 1.6rem);
   font-weight: 200;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
@@ -228,7 +231,7 @@ const SpeechBubbleText = styled.p`
   bottom: 240px;
   left: 148px;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   letter-spacing: 1px;
@@ -264,10 +267,10 @@ const TiltContainer = styled(Tilt)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 70px;
+  padding: 60px;
   border-radius: 50px;
   /* border: 2px solid grey; */
-  max-width: 490px;
+  max-width: 450px;
   margin-top: -35px;
 
   text-align: center;

@@ -57,28 +57,38 @@ const IconContainer = styled.a`
   align-items: center;
   justify-content: center;
   padding: 8px 0;
-  transition: 0.2s;
-
-  &:hover {
-    transform: translate(0px, -3px);
-  }
 `
 
 const IconOne = styled(LinkedinLogo)`
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   width: 22px;
+  transition: 0.4s;
+  &:hover {
+    color: orange;
+    transform: translate(0px, -3px);
+  }
 `
 const IconTwo = styled(GithubLogo)`
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   width: 22px;
+  transition: 0.4s;
+  &:hover {
+    color: orange;
+    transform: translate(0px, -3px);
+  }
 `
 
 const IconThree = styled(MailIcon)`
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   width: 22px;
+  transition: 0.4s;
+  &:hover {
+    color: orange;
+    transform: translate(0px, -3px);
+  }
 `
 
 export default SidebarLeft
