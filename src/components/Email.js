@@ -34,11 +34,11 @@ const Email = () => {
           name="contact"
           method="post"
           action="https://www.georgewillens.com/"
-          netlify-honeypot="bot-field"
+          // netlify-honeypot="bot-field"
           data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="bot-field" />
+          {/* <input type="hidden" name="bot-field" /> */}
 
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
 
@@ -58,7 +58,7 @@ const Email = () => {
           <ButtonContainer>
             {" "}
             <SendIcon />
-            <Button type="submit" value="SEND"></Button>
+            <Button type="submit">SEND</Button>
           </ButtonContainer>
         </ContactForm>
       </RightColumn>
