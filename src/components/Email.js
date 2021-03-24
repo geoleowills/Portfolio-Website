@@ -20,7 +20,7 @@ const Email = () => {
         data-aos-delay="50"
         data-aos-duration="1000"
       >
-        <MailLogo isToggled={isToggled} />
+        <MailLogo />
       </LeftColumn>
       <RightColumn
         data-aos="fade-left"
@@ -35,6 +35,7 @@ const Email = () => {
           method="POST"
           action="https://www.georgewillens.com/"
           netlify-honeypot="bot-field"
+          data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contactForm" />
           <input type="hidden" name="bot-field" />
@@ -99,7 +100,7 @@ const LeftColumn = styled.div`
 const MailLogo = styled(MailSvg)`
   width: 100%;
   max-width: 280px;
-  color: var(--main-pink);
+  color: var(--main-colour);
 `
 
 const RightColumn = styled.div`
@@ -185,7 +186,7 @@ const Button = styled.input`
   font-size: 16px;
   font-weight: 500;
   border: 0;
-  background-color: var(--main-pink);
+  background-color: var(--main-colour);
   color: white;
   cursor: pointer;
   padding-right: 26px;

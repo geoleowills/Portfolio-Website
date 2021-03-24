@@ -12,34 +12,30 @@ const Dropdown = () => {
 
   useEffect(() => {
     setCurrentLocation(window.location.pathname)
-  })
+  }, [])
 
   return (
     <DropdownContainer isOpen={isOpen} onClick={toggle} isToggled={isToggled}>
-      <IconContainer onClick={toggle}>
-        <Icon />
-      </IconContainer>
-      <DropdownWrapper>
-        {currentLocation === "/" ? (
-          <DropdownMenu>
-            {menuData.map((item, index) => (
-              <DropdownLink
-                to={item.link}
-                key={index}
-                smooth={true}
-                duration={1000}
-                onClick={toggle}
-              >
-                {item.title}
-              </DropdownLink>
-            ))}
-          </DropdownMenu>
-        ) : (
-          <DropdownLink>
-            <HomeLink to="/">.home()</HomeLink>
-          </DropdownLink>
-        )}
-      </DropdownWrapper>
+      <Icon onClick={toggle} />
+      {currentLocation === "/" ? (
+        <DropdownMenu>
+          {menuData.map((item, index) => (
+            <DropdownLink
+              to={item.link}
+              key={index}
+              smooth={true}
+              duration={1000}
+              onClick={toggle}
+            >
+              {item.title}
+            </DropdownLink>
+          ))}
+        </DropdownMenu>
+      ) : (
+        <DropdownLink>
+          <HomeLink to="/">.home()</HomeLink>
+        </DropdownLink>
+      )}
     </DropdownContainer>
   )
 }
@@ -62,21 +58,16 @@ const DropdownContainer = styled.aside`
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
 `
 
-const IconContainer = styled.div`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
-  outline: none;
-`
-
 const Icon = styled(CloseIcon)`
   color: var(--very-light-grey);
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  cursor: pointer;
 `
-
-const DropdownWrapper = styled.div``
 
 const DropdownMenu = styled.div`
   display: grid;
@@ -89,6 +80,7 @@ const DropdownMenu = styled.div`
     grid-template-rows: repeat(4, 60px);
   }
 `
+
 const DropdownLink = styled(ScrollLink)`
   display: flex;
   align-items: center;
@@ -101,7 +93,7 @@ const DropdownLink = styled(ScrollLink)`
   cursor: pointer;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
   }
 `
 
@@ -117,6 +109,6 @@ const HomeLink = styled(GatsbyLink)`
   transition: 0.4s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
   }
 `

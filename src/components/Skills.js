@@ -185,6 +185,6 @@ const Icon = styled.div`
 `
 
 const TitleIcon = styled(SkillsIcon)`
-  color: var(--title-icon);
+  color: var(--icon-colour);
   font-size: 2rem;
 `

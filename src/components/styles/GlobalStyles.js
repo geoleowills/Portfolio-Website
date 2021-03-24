@@ -11,12 +11,11 @@ export const GlobalStyle = createGlobalStyle`
 
     --very-light-grey: #FCFCFC;
     --light-grey: #F8F8F8;
-    --grey: #ebebeb;
+    --grey: #EBEBEB;
     --dark-grey: #474747;
     --very-dark-grey: #292929;
-    --main-pink: #14213d;
-    --title-icon: orange;
+    --main-colour: #14213D;
+    --icon-colour: orange;
   }
 
 `
-// --main-pink: #E98074;

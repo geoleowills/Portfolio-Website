@@ -28,8 +28,6 @@ const AboutMe = () => {
     }
   `)
 
-  console.log(getDescription)
-
   return (
     <AboutMeContainer id="aboutme" isToggled={isToggled}>
       <TitleContainer
@@ -41,6 +39,7 @@ const AboutMe = () => {
         <Title>ABOUT ME</Title>
       </TitleContainer>
       <Underline
+        isToggled={isToggled}
         data-aos="fade-right"
         data-aos-delay="150"
         data-aos-duration="1000"
@@ -80,7 +79,7 @@ const TitleContainer = styled.div`
 `
 
 const Icon = styled(ProfileIcon)`
-  color: orange;
+  color: var(--icon-colour);
   font-size: 1.85rem;
 `
 
@@ -90,10 +89,12 @@ const Title = styled.h1`
   font-weight: 700;
 `
 
-const Underline = styled.hr`
-  margin: 35px;
-  color: var(--very-dark-grey);
-  border-radius: 20px;
+const Underline = styled.div`
+  width: calc(100% - 70px);
+  height: 1px;
+  margin: 2rem 35px;
+  background-color: ${({ isToggled }) =>
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
 
 const ContentWrapper = styled.div`

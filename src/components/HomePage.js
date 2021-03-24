@@ -145,8 +145,8 @@ const HomePageContent = styled.div`
 
   background: ${({ isToggled }) =>
     isToggled
-      ? "linear-gradient(135deg, var(--main-pink) 0, var(--main-pink) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-pink) 90%)"
-      : "linear-gradient(135deg, var(--main-pink) 0, var(--main-pink) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-pink) 90%)"};
+      ? "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-colour) 90%)"
+      : "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-colour) 90%)"};
 
   z-index: 3;
   display: flex;
@@ -172,7 +172,7 @@ const Name = styled.h1`
   /* padding: 0 1rem; */
   text-align: center;
   color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--main-pink)"};
+    isToggled ? "var(--very-light-grey)" : "var(--main-colour)"};
   font-size: clamp(1.9rem, 3.5vw, 3.5rem);
   letter-spacing: 3px;
   /* width: 1px; */
@@ -196,13 +196,16 @@ const ArrowContainer = styled(ScrollLink)`
   height: 100%; */
   align-items: center;
   justify-content: center;
+  height: 45px;
+  width: 45px;
   /* padding-left: 100px; */
 
   transition: 0.7s;
 `
 
 const Arrow = styled(ArrowDown)`
-  height: 45px;
+  height: 100%;
+  width: 100%;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   z-index: 10000;
@@ -278,7 +281,7 @@ const TiltContainer = styled(Tilt)`
   line-height: 1.1;
 
   background-color: ${({ isToggled }) =>
-    isToggled ? "var(--main-pink)" : "var(--grey)"};
+    isToggled ? "var(--main-colour)" : "var(--grey)"};
   transform-style: preserve-3d;
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 

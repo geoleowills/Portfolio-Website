@@ -184,10 +184,11 @@ const ProjectsHeading = styled.h1`
   font-weight: bold;
 `
 
-const Underline = styled.hr`
-  margin: 0 2rem 2rem 2rem;
-  color: var(--very-dark-grey);
-  border-radius: 20px;
+const Underline = styled.div`
+  width: calc(100% - 35px);
+  height: 1px;
+  margin: 2rem 35px 2rem auto;
+  background-color: var(--very-dark-grey);
 `
 
 const ProjectWrapper = styled.div`
@@ -250,7 +251,7 @@ const VideoButton = styled.button`
   font-weight: 600;
   fill: var(--very-dark-grey);
 
-  background-color: var(--main-pink);
+  background-color: var(--main-colour);
   border: 0;
   color: var(--very-light-grey);
 
@@ -357,7 +358,7 @@ const SourceCodeButton = styled.a`
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 400;
-  background-color: var(--main-pink);
+  background-color: var(--main-colour);
   border: 0;
   color: var(--very-light-grey);
 
