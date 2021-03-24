@@ -31,13 +31,13 @@ const Email = () => {
           <Title>Get In Touch</Title>
         </TitleContainer>
         <ContactForm
-          name="contactForm"
-          method="POST"
+          name="contact"
+          method="post"
           action="https://www.georgewillens.com/"
           netlify-honeypot="bot-field"
           data-netlify="true"
         >
-          <input type="hidden" name="form-name" value="contactForm" />
+          <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
 
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
