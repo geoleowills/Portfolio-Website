@@ -15,7 +15,7 @@ const Email = () => {
 
   return (
     <ContactContainer id="contact" isToggled={isToggled}>
-      {/* <LeftColumn
+      <LeftColumn
         data-aos="fade-right"
         data-aos-delay="50"
         data-aos-duration="1000"
@@ -31,13 +31,13 @@ const Email = () => {
           <Title>Get In Touch</Title>
         </TitleContainer>
         <ContactForm
-          name="contact"
-          method="post"
+          name="contactForm"
+          method="POST"
           action="https://www.georgewillens.com/"
           netlify-honeypot="bot-field"
           data-netlify="true"
         >
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="contactForm" />
           <input type="hidden" name="bot-field" />
 
           <NameInput placeholder="Name" name="name" id="name"></NameInput>
@@ -58,50 +58,10 @@ const Email = () => {
           <ButtonContainer>
             {" "}
             <SendIcon />
-            <Button type="submit">SEND</Button>
+            <Button type="submit" value="SEND"></Button>
           </ButtonContainer>
         </ContactForm>
-      </RightColumn> */}
-
-      <form
-        name="contact"
-        method="post"
-        action="https://www.georgewillens.com/"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>
-            Don’t fill this out: <input name="bot-field" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Your name:
-            <br />
-            <input type="text" name="name" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Your email:
-            <br />
-            <input type="email" name="email" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Message:
-            <br />
-            <textarea name="message" />
-          </label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+      </RightColumn>
     </ContactContainer>
   )
 }
@@ -219,7 +179,7 @@ const ButtonContainer = styled.div`
   position: relative;
 `
 
-const Button = styled.button`
+const Button = styled.input`
   width: 100%;
   height: 100%;
   border-radius: 10px;
