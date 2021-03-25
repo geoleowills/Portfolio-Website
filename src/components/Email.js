@@ -35,7 +35,7 @@ const Email = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": event.target.getAttribute("name"),
-        ...name,
+        ...formState,
       }),
     })
       .then(() => alert("THANK YOU"))
