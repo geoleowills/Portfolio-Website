@@ -38,7 +38,7 @@ const Email = () => {
         ...formState,
       }),
     })
-      .then(() => navigate("/thank-you/"))
+      .then(() => alert("THANK YOU"))
       .catch(error => alert(error))
   }
 
