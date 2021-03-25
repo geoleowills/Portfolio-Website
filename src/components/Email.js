@@ -67,7 +67,7 @@ const Email = () => {
           data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contactForm" />
-          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="bot-field" onChange={handleChange} />
 
           <NameInput
             placeholder="Name"
