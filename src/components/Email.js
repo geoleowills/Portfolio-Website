@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import styled from "styled-components"
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -9,6 +9,15 @@ import SendSvg from "../assets/svgs/sendIcon.svg"
 const Email = () => {
   const { isToggled } = useContext(Context)
 
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+
+  const handleChange = e => {
+    setFormState({ ...formState, [e.target.name]: e.target.value })
+  }
   useEffect(() => {
     Aos.init({})
   }, [])
@@ -25,8 +34,8 @@ const Email = () => {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": event.target.getAttribute("name"),
-        ...name,
+        "form-name": ContactForm,
+        ...formState,
       }),
     })
       .then(() => navigate("/thank-you/"))
@@ -60,13 +69,21 @@ const Email = () => {
           <input type="hidden" name="form-name" value="contactForm" />
           <input type="hidden" name="bot-field" />
 
-          <NameInput placeholder="Name" name="name" id="name"></NameInput>
+          <NameInput
+            placeholder="Name"
+            name="name"
+            id="name"
+            onChange={handleChange}
+            value={formState.name}
+          ></NameInput>
 
           <EmailInput
             type="email"
             placeholder="Email"
             name="email"
             id="email"
+            onChange={handleChange}
+            value={formState.email}
           ></EmailInput>
 
           <MessageInput
@@ -74,6 +91,8 @@ const Email = () => {
             name="message"
             id="message"
             rows="8"
+            onChange={handleChange}
+            value={formState.message}
           ></MessageInput>
           <ButtonContainer>
             {" "}
