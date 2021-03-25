@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext, useState, Fragment } from "react"
 import styled from "styled-components"
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -14,6 +14,8 @@ const Email = () => {
     email: "",
     message: "",
   })
+
+  const [messageSent, setMessageSent] = useState(false)
 
   const handleChange = e => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -38,7 +40,13 @@ const Email = () => {
         ...formState,
       }),
     })
-      .then(() => alert("THANK YOU"))
+      .then(() => setFormState({ name: "", email: "", message: "" }))
+      .then(() => setMessageSent(true))
+      .then(() =>
+        setTimeout(() => {
+          setMessageSent(false)
+        }, 5000)
+      )
       .catch(error => alert(error))
   }
 
@@ -67,7 +75,7 @@ const Email = () => {
           data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contactForm" />
-          <input type="hidden" name="bot-field" onChange={handleChange} />
+          <input type="hidden" name="bot-field" />
 
           <NameInput
             placeholder="Name"
@@ -95,9 +103,19 @@ const Email = () => {
             value={formState.message}
           ></MessageInput>
           <ButtonContainer>
-            {" "}
-            <SendIcon />
-            <Button type="submit" value="SEND"></Button>
+            {messageSent ? (
+              <Fragment>
+                <Button
+                  type="submit"
+                  value="     THANKS FOR YOUR MESSAGE!"
+                ></Button>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Button type="submit" value="SEND"></Button>
+                <SendIcon />
+              </Fragment>
+            )}{" "}
           </ButtonContainer>
         </ContactForm>
       </RightColumn>
@@ -213,7 +231,7 @@ const MessageInput = styled.textarea`
 `
 
 const ButtonContainer = styled.div`
-  width: 98px;
+  min-width: 98px;
   height: 40px;
   position: relative;
 `
