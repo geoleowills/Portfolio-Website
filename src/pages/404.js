@@ -1,54 +1,27 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import styled from "styled-components"
-import Provider from "../Context"
-import { Link as GatsbyLink } from "gatsby"
+import ErrorSection from "./ErrorSection"
+import { Helmet } from "react-helmet"
 
-const NotFoundPage = () => (
-  <Provider>
-    <Layout>
-      <SEO title="404: Not found" />
-      <Error>
-        <h1>404</h1>
-        <p>Oh no! Page not found.</p>
-        <Button to="/">HOME</Button>
-      </Error>
-    </Layout>
-  </Provider>
-)
+import Provider from "../Context"
+
+const NotFoundPage = () => {
+  return (
+    <Provider>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <Layout>
+        <SEO title="404: Not found" />
+        <ErrorSection />
+      </Layout>
+    </Provider>
+  )
+}
 
 export default NotFoundPage
-
-const Error = styled.div`
-  background: #e98074;
-  height: calc(100vh - 200px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h1 {
-    font-size: clamp(4rem, 10vw, 20rem);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: clamp(2rem, 3vw, 10rem);
-    margin-bottom: 2rem;
-  }
-`
-
-const Button = styled(GatsbyLink)`
-  width: 95px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: 600;
-  background-color: #ebebeb;
-  text-decoration: none;
-  color: black;
-`

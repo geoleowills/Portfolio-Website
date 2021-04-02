@@ -6,12 +6,11 @@ import Aos from "aos"
 import shortid from "shortid"
 import { Context } from "../Context"
 import "aos/dist/aos.css"
+import Tilt from "react-parallax-tilt"
+import { Pace, WindupChildren } from "windups"
 import MePng from "../assets/images/me.png"
 import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
-import Tilt from "react-parallax-tilt"
-import Typing from "react-typing-animation"
-import { Pace, WindupChildren } from "windups"
 
 const HomePage = () => {
   const { isToggled } = useContext(Context)
@@ -44,9 +43,7 @@ const HomePage = () => {
       <HomePageContent isToggled={isToggled} key={getRandomKey()}>
         <MeImg src={MePng} width={250} />
         <TextBubble />
-        {/* <Linebreaker width={300}> */}{" "}
         <SpeechBubbleText isToggled={isToggled}>
-          {/* <Typing> */}
           <WindupChildren>
             <Pace ms={75}>
               Hi,
@@ -58,14 +55,9 @@ const HomePage = () => {
               my site!
             </Pace>
           </WindupChildren>
-
-          {/* </Typing> */}
         </SpeechBubbleText>
-        {/* </Linebreaker> */}
         <TiltContainer perspective={500} isToggled={isToggled}>
           <MainInfo>
-            {/* <MyInfo> */}
-
             <Name
               data-aos="fade-up"
               data-aos-delay="50"
@@ -74,7 +66,7 @@ const HomePage = () => {
             >
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.firstName
-              })}{" "}
+              })}
               <br />
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.lastName
@@ -130,31 +122,17 @@ const TargetDiv = styled.div`
 `
 
 const HomePageContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: calc(100% - 70px);
   max-height: 100%;
   margin: 0 35px;
-
-  /* background: linear-gradient(
-    135deg,
-    #669d89 0,
-    #669d89 10%,
-    var(--light-grey) 10%,
-    var(--light-grey) 90%,
-    #669d89 90%
-  ); */
-
   background: ${({ isToggled }) =>
     isToggled
       ? "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-colour) 90%)"
       : "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-colour) 90%)"};
-
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media screen and (max-width: 1000px) {
-    /* align-items: flex-start; */
-  }
+  z-index: 1;
 `
 
 const MainInfo = styled.div`
@@ -167,17 +145,38 @@ const MainInfo = styled.div`
   transform: translateZ(70px);
 `
 
+const TiltContainer = styled(Tilt)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 450px;
+  padding: 60px;
+  border-radius: 50px;
+  margin-top: -35px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.1;
+  background-color: ${({ isToggled }) =>
+    isToggled ? "var(--main-colour)" : "var(--grey)"};
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
+
+  @media screen and (max-width: 1000px) {
+    padding: 45px;
+    padding-top: 50px;
+    margin-top: -100px;
+  }
+`
+
 const Name = styled.h1`
   margin-bottom: 1.5rem;
-  /* padding: 0 1rem; */
-  text-align: center;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--main-colour)"};
   font-size: clamp(1.9rem, 3.5vw, 3.5rem);
-  letter-spacing: 3px;
-  /* width: 1px; */
   font-weight: 600;
-  /* text-shadow: 4px 4px 15px grey; */
+  text-align: center;
+  letter-spacing: 3px;
 `
 
 const Title = styled.p`
@@ -192,14 +191,10 @@ const Title = styled.p`
 
 const ArrowContainer = styled(ScrollLink)`
   display: flex;
-  /* width: 50%;
-  height: 100%; */
   align-items: center;
   justify-content: center;
   height: 45px;
   width: 45px;
-  /* padding-left: 100px; */
-
   transition: 0.7s;
 `
 
@@ -208,10 +203,9 @@ const Arrow = styled(ArrowDown)`
   width: 100%;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  z-index: 10000;
+  z-index: 5;
   transition: 0.4s;
   cursor: pointer;
-  /* transform: rotate(-0.5deg); */
 
   & :hover {
     color: orange;
@@ -253,41 +247,5 @@ const TextBubble = styled(SpeechBubble)`
 
   @media screen and (max-width: 1000px) {
     bottom: 98px;
-  }
-`
-
-const MyInfo = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-`
-
-const TiltContainer = styled(Tilt)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 60px;
-  border-radius: 50px;
-  /* border: 2px solid grey; */
-  max-width: 450px;
-  margin-top: -35px;
-
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.1;
-
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--main-colour)" : "var(--grey)"};
-  transform-style: preserve-3d;
-  box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
-
-  @media screen and (max-width: 1000px) {
-    padding: 45px;
-    padding-top: 50px;
-    margin-top: -100px;
   }
 `

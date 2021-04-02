@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
-import GitHubLogo from "../assets/svgs/gitHubLogo.svg"
 import { Context } from "../Context"
 import CloseIcon from "../assets/svgs/closeIcon.svg"
 
@@ -16,10 +14,6 @@ const ModalWindow = () => {
 
   const [id, setId] = useState(selectedModal.toString())
   const [videoUrl, setVideoUrl] = useState(null)
-  const [heading, setHeading] = useState(null)
-  const [description, setDescription] = useState(null)
-  const [technologies, setTechnologies] = useState([])
-  const [gitLink, setGitLink] = useState(null)
 
   const getVideo = useStaticQuery(graphql`
     query VideoQuery {
@@ -46,27 +40,6 @@ const ModalWindow = () => {
         setVideoUrl(
           `https://player.vimeo.com/video/${video.node.videoId}?loop=1&title=0&byline=0&portrait=0`
         )
-        setHeading(video.node.heading)
-        setDescription(renderRichText(video.node.description))
-
-        const technologiesList = video.node.technologiesUsed.map(
-          (tech, index) => (
-            <React.Fragment>
-              <li>{tech}</li>
-              {video.node.technologiesUsed.length != index + 1 ? (
-                <Underline />
-              ) : (
-                <span
-                  css={`
-                    display: none;
-                  `}
-                ></span>
-              )}
-            </React.Fragment>
-          )
-        )
-        setTechnologies(technologiesList)
-        setGitLink(video.node.githubLink)
       }
     })
   }, [])
@@ -86,56 +59,31 @@ const ModalWindow = () => {
           allowfullscreen
         ></Video>
       </VideoContainer>
-      {/* <ModalContent>
-        <ContentContainer>
-          <Video
-            src={videoUrl}
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-          ></Video>
-
-          <ProjectContainer>
-            <ProjectInfo>
-              <Heading>{heading}</Heading>
-              <Description>{description}</Description>
-            </ProjectInfo>
-            <TechnologyContainer>
-              <TechnologyList>{technologies}</TechnologyList>
-            </TechnologyContainer>
-            <Links>
-              <Button href={gitLink} target="_blank" rel="noreferrer noopener">
-                <h1>SOURCE CODE</h1>
-                <GhLogo />
-              </Button>
-            </Links>
-          </ProjectContainer>
-        </ContentContainer>
-      </ModalContent> */}
     </MainContainer>
   )
 }
 
 const MainContainer = styled.div`
-  transition: 0.4s;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10000000;
   top: 0;
   left: 0;
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: 0.4s;
+  z-index: 8;
 `
+
 const ModalWindowContainer = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 `
 
 const Video = styled.iframe`
@@ -145,24 +93,17 @@ const Video = styled.iframe`
   padding: 0;
 `
 
-const Underline = styled.hr`
-  border: 0;
-  border-top: 1px solid black;
-  width: 100%;
-  border-radius: 20px;
-`
-
 const VideoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   max-width: 60vw;
   max-height: calc(60vw / 1.65);
-  z-index: 110000000;
-  display: flex;
   margin-top: -50px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  z-index: 9;
 
   @media screen and (max-width: 1400px) {
     max-width: 70vw;
@@ -186,9 +127,9 @@ const VideoContainer = styled.div`
 `
 
 const Icon = styled(CloseIcon)`
-  color: white;
   width: 100%;
   height: 100%;
+  color: white;
   cursor: pointer;
 `
 

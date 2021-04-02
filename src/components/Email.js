@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, Fragment } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import styled from "styled-components"
 import Aos from "aos"
 import "aos/dist/aos.css"
@@ -14,15 +14,15 @@ const Email = () => {
     email: "",
     message: "",
   })
-
   const [messageSent, setMessageSent] = useState(false)
+
+  useEffect(() => {
+    Aos.init({})
+  }, [])
 
   const handleChange = e => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
   }
-  useEffect(() => {
-    Aos.init({})
-  }, [])
 
   function encode(data) {
     return Object.keys(data)
@@ -45,7 +45,7 @@ const Email = () => {
       .then(() =>
         setTimeout(() => {
           setMessageSent(false)
-        }, 5000)
+        }, 3000)
       )
       .catch(error => alert(error))
   }
@@ -83,6 +83,7 @@ const Email = () => {
             id="name"
             onChange={handleChange}
             value={formState.name}
+            required
           ></NameInput>
 
           <EmailInput
@@ -92,6 +93,7 @@ const Email = () => {
             id="email"
             onChange={handleChange}
             value={formState.email}
+            required
           ></EmailInput>
 
           <MessageInput
@@ -101,21 +103,20 @@ const Email = () => {
             rows="8"
             onChange={handleChange}
             value={formState.message}
+            required
           ></MessageInput>
+
           <ButtonContainer>
             {messageSent ? (
-              <Fragment>
-                <Button
-                  type="submit"
-                  value="     THANKS FOR YOUR MESSAGE!"
-                ></Button>
-              </Fragment>
+              <Button type="submit" messageSent={messageSent}>
+                THANKS FOR YOUR MESSAGE!
+              </Button>
             ) : (
-              <Fragment>
-                <Button type="submit" value="SEND"></Button>
+              <Button type="submit" messageSent={messageSent}>
+                SEND
                 <SendIcon />
-              </Fragment>
-            )}{" "}
+              </Button>
+            )}
           </ButtonContainer>
         </ContactForm>
       </RightColumn>
@@ -200,7 +201,7 @@ const NameInput = styled.input`
   height: 10%;
   margin-bottom: 10px;
   padding-left: 15px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 10px;
   border: 0;
@@ -212,7 +213,7 @@ const EmailInput = styled.input`
   height: 10%;
   margin-bottom: 10px;
   padding-left: 15px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 10px;
   border: 0;
@@ -223,7 +224,7 @@ const MessageInput = styled.textarea`
   width: 100%;
   margin-bottom: 1rem;
   padding: 10px 0 0 15px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 10px;
   border: 0;
@@ -236,21 +237,23 @@ const ButtonContainer = styled.div`
   position: relative;
 `
 
-const Button = styled.input`
+const Button = styled.button`
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   border: 0;
   background-color: var(--main-colour);
   color: white;
   cursor: pointer;
-  padding-right: 26px;
   transition: 0.4s;
 
+  padding: ${({ messageSent }) =>
+    messageSent ? "0px 15px 0px 15px" : "0 26px 0 0"};
+
   & :hover {
-    background-color: orange;
+    background-color: var(--icon-color);
   }
 `
 

@@ -54,7 +54,7 @@ const DropdownContainer = styled.aside`
   background: ${({ isToggled }) =>
     isToggled ? "var(--dark-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s ease-in-out;
-  z-index: 999;
+  z-index: 3;
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
 `
 

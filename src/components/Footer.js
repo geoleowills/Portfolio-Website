@@ -36,7 +36,7 @@ const FooterContainer = styled.div`
   width: calc(100% - 70px);
   height: 100%;
   margin: 0 35px;
-  padding: 2rem calc((100vw - 1300px) / 2);
+  padding: 35px calc((100vw - 1300px) / 2);
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   background-color: ${({ isToggled }) =>
@@ -46,6 +46,7 @@ const FooterContainer = styled.div`
 
 const ContactInfo = styled.div`
   padding-bottom: 1rem;
+
   & > p {
     font-size: 0.85rem;
   }
@@ -63,12 +64,12 @@ const Info = styled.div`
   justify-content: space-between;
   align-items: space-between;
   height: 100%;
-  padding-left: 2rem;
+  padding-left: 35px;
 `
 
 const ArrowContainer = styled(ScrollLink)`
   display: flex;
-  padding-right: 2rem;
+  padding-right: 35px;
   cursor: pointer;
 `
 const Arrow = styled(ArrowDown)`
@@ -79,5 +80,6 @@ const Arrow = styled(ArrowDown)`
 
   &:hover {
     transform: rotate(540deg);
+    color: var(--icon-colour);
   }
 `

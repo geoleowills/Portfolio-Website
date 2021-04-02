@@ -3,9 +3,9 @@ import Email from "../components/Email"
 import HomePage from "../components/HomePage"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Stats from "../components/Skills"
+import Skills from "../components/Skills"
 import AboutMe from "../components/AboutMe"
-import Trips from "../components/Projects"
+import Projects from "../components/Projects"
 import Provider from "../Context"
 import { Helmet } from "react-helmet"
 
@@ -22,9 +22,8 @@ const IndexPage = () => (
       <SEO title="George Willens" />
       <HomePage />
       <AboutMe />
-      <Trips />
-
-      <Stats />
+      <Projects />
+      <Skills />
       <Email />
     </Layout>
   </Provider>

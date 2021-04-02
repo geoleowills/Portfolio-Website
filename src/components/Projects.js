@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext, Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
@@ -68,16 +68,7 @@ const Projects = () => {
           >
             <CoverImage fluid={item.node.coverPhoto.fluid}>
               <BlackOverlay>
-                {" "}
-                <CardTitle
-                  isToggled={isToggled}
-                  // data-aos="fade-left"
-                  // data-aos-delay="400"
-                  // data-aos-duration="1000"
-                >
-                  {" "}
-                  {item.node.heading}
-                </CardTitle>
+                <CardTitle isToggled={isToggled}>{item.node.heading}</CardTitle>
                 <VideoButton
                   id={index}
                   type="button"
@@ -91,7 +82,6 @@ const Projects = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  {" "}
                   <GhLogo />
                   Source Code
                 </SourceCodeButton>
@@ -99,7 +89,8 @@ const Projects = () => {
             </CoverImage>
 
             <CardDescription>
-              <h2>Description</h2> <CardUnderline />
+              <h2>Description</h2>
+              <CardUnderline />
               {renderRichText(item.node.description)}
             </CardDescription>
             <TechnologiesContainer>
@@ -121,7 +112,7 @@ const Projects = () => {
   }
 
   return (
-    <div>
+    <Fragment>
       {modalDisplay ? <ModalWindow /> : <span></span>}
       <ProjectContainer isToggled={isToggled}>
         <TargetDiv id="portfolio"></TargetDiv>
@@ -134,13 +125,14 @@ const Projects = () => {
           <ProjectsHeading>PROJECT PORTFOLIO</ProjectsHeading>
         </TitleContainer>
         <Underline
+          isToggled={isToggled}
           data-aos="fade-left"
           data-aos-delay="150"
           data-aos-duration="1000"
         />
         <ProjectWrapper>{getProjects(cardData)}</ProjectWrapper>
       </ProjectContainer>
-    </div>
+    </Fragment>
   )
 }
 
@@ -156,6 +148,7 @@ const ProjectContainer = styled.div`
   transition: 0.4s;
   font-weight: 500;
 `
+
 // This div is the target that the menu links are set to, we can set this div above the element to avoid
 // the header overlapping anything.
 const TargetDiv = styled.div`
@@ -170,25 +163,26 @@ const TitleContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 1.5rem;
-  padding: 0 2rem;
+  padding: 0 35px;
 `
 
 const Icon = styled(CodingIcon)`
-  color: orange;
+  color: var(--icon-colour);
   font-size: 2rem;
 `
 
 const ProjectsHeading = styled.h1`
-  padding-left: 0.5rem;
+  padding-left: 8px;
   font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: bold;
 `
 
 const Underline = styled.div`
-  width: calc(100% - 35px);
+  width: calc(100% - 70px);
   height: 1px;
-  margin: 2rem 35px 2rem auto;
-  background-color: var(--very-dark-grey);
+  margin: 2rem 35px;
+  background-color: ${({ isToggled }) =>
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
 
 const ProjectWrapper = styled.div`
@@ -196,7 +190,7 @@ const ProjectWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 35px;
   justify-items: center;
-  padding: 0 2rem;
+  padding: 0 35px;
 
   @media screen and (max-width: 868px) {
     grid-template-columns: 1fr;
@@ -218,16 +212,10 @@ const ProjectCard = styled.div`
   overflow: hidden;
   padding-bottom: 20px;
 `
-const ProjectImg = styled(Img)`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-`
 
 const CardTitle = styled.h1`
   margin-bottom: 15px;
   margin-top: 15px;
-
   font-weight: 600;
   font-size: 2rem;
   transition: 0.4s;
@@ -238,27 +226,21 @@ const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 135px;
   height: 35px;
   margin-bottom: 10px;
-
   border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
-
   transition: 0.4s;
   font-weight: 600;
   fill: var(--very-dark-grey);
-
   background-color: var(--main-colour);
   border: 0;
   color: var(--very-light-grey);
 
   & :hover {
-    /* filter: brightness(110%);
-    transform: translateY(-3px); */
-    background-color: orange;
+    background-color: var(--icon-colour);
   }
 `
 const CardDescription = styled.div`
@@ -266,19 +248,13 @@ const CardDescription = styled.div`
   flex-direction: column;
   font-size: 0.85rem;
   font-weight: 400;
-  padding-top: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 5px 20px 0 20px;
 
   & > h2 {
     padding-bottom: 8px;
     padding-top: 7px;
     text-align: center;
     font-weight: 600;
-  }
-
-  & > p {
-    /* padding-left: 1rem; */
   }
 
   & > ul {
@@ -300,35 +276,25 @@ const CardDescription = styled.div`
   @media screen and (max-width: 400px) {
     font-size: 0.65rem;
   }
-
-  & > ul {
-    /* margin-left: 1rem; */
-  }
 `
 
 const TechnologiesList = styled.ul`
-  margin-top: 16px;
-  list-style-type: none;
-  text-align: center;
-  font-weight: 400;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding-left: 0;
   align-items: center;
   justify-content: center;
+  margin-top: 16px;
+  padding-left: 0;
+  font-weight: 400;
+  text-align: center;
+  flex-wrap: wrap;
+  list-style-type: none;
 
   & > li {
-    margin-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 0 5px 10px 5px;
+    padding: 2px 5px;
     font-size: 1rem;
-    /* flex: 1;
-    flex-basis: 20%;
-    max-width: 25%; */
     border: 0;
     border-radius: 6px;
-    padding: 2px 5px;
     background-color: var(--dark-grey);
     color: var(--very-light-grey);
   }
@@ -339,6 +305,7 @@ const PlayIcon = styled(PlayButton)`
   margin-right: 4px;
   fill: var(--very-light-grey);
 `
+
 const CardContainer = styled.div`
   display: flex;
   align-items: center;
@@ -346,14 +313,13 @@ const CardContainer = styled.div`
   flex-direction: column;
   border-radius: 10px;
 `
+
 const SourceCodeButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 135px;
   height: 35px;
-
   border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -361,35 +327,31 @@ const SourceCodeButton = styled.a`
   background-color: var(--main-colour);
   border: 0;
   color: var(--very-light-grey);
-
   text-decoration: none;
   transition: 0.4s;
   font-weight: 600;
 
   & :hover {
-    /* filter: brightness(110%);
-    transform: translateY(-3px); */
     background-color: orange;
   }
 `
 
 const GhLogo = styled(GitHubLogo)`
   width: 25px;
-
   margin-right: 5px;
 `
 
 const TechnologiesContainer = styled.div`
   width: 100%;
+  padding: 0 20px;
   font-size: 0.85rem;
   text-align: center;
-  padding: 0 20px;
 `
 
 const TechnologiesHeading = styled.h2`
+  margin-top: 10px;
   padding-bottom: 12px;
   padding-top: 7px;
-  margin-top: 10px;
   font-weight: 600;
 `
 
@@ -398,14 +360,6 @@ const CardUnderline = styled.div`
   margin-bottom: 8px;
   height: 1px;
   background-color: var(--grey);
-`
-
-const Buttons = styled.div`
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 `
 
 const CoverImage = styled(BackgroundImage)`
@@ -421,12 +375,11 @@ const BlackOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
+  padding: 5px 20px 20px 20px;
   background-color: rgba(0, 0, 0, 0.5);
-  flex-direction: column;
   border-radius: 10px;
-  padding: 20px;
   text-align: center;
-  padding-top: 5px;
 `

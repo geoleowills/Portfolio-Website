@@ -19,7 +19,7 @@ const Sidebar = styled.div`
   right: 0;
   background-color: ${({ isToggled }) =>
     isToggled ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
-  z-index: 1000000;
+  z-index: 7;
 `
 
 export default SidebarRight

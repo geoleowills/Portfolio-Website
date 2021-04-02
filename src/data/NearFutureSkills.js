@@ -4,8 +4,8 @@ import DockerSvg from "../assets/svgs/docker.svg"
 import MongoDbSvg from "../assets/svgs/mongodb.svg"
 import JestSvg from "../assets/svgs/jest.svg"
 
-const width = 100
-const height = 100
+const width = 90
+const height = 90
 
 export const NearFutureSkillsData = [
   {

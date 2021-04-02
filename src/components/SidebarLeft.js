@@ -49,7 +49,7 @@ const Sidebar = styled.div`
   background-color: ${({ isToggled }) =>
     isToggled ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   transition: 0.4s;
-  z-index: 10004;
+  z-index: 6;
 `
 
 const IconContainer = styled.a`
@@ -60,20 +60,22 @@ const IconContainer = styled.a`
 `
 
 const IconOne = styled(LinkedinLogo)`
+  width: 22px;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  width: 22px;
   transition: 0.4s;
+
   &:hover {
     color: orange;
     transform: translate(0px, -3px);
   }
 `
 const IconTwo = styled(GithubLogo)`
+  width: 22px;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  width: 22px;
   transition: 0.4s;
+
   &:hover {
     color: orange;
     transform: translate(0px, -3px);
@@ -81,10 +83,11 @@ const IconTwo = styled(GithubLogo)`
 `
 
 const IconThree = styled(MailIcon)`
+  width: 22px;
   color: ${({ isToggled }) =>
     isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  width: 22px;
   transition: 0.4s;
+
   &:hover {
     color: orange;
     transform: translate(0px, -3px);

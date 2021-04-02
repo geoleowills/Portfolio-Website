@@ -11,8 +11,8 @@ import ReactSvg from "../assets/svgs/reactLogo.svg"
 import ContentfulSvg from "../assets/svgs/contentful.svg"
 import GitSvg from "../assets/svgs/gitLogo.svg"
 
-const width = 100
-const height = 100
+const width = 90
+const height = 90
 
 export const CurrentSkillsData = [
   {
