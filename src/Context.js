@@ -1,6 +1,16 @@
 import React, { createContext, useState } from "react"
 
-export const Context = createContext()
+const defaultState = {
+  isToggled: false,
+  modalDisplay: false,
+  selectedModal: null,
+  isOpen: false,
+  toggle: () => {},
+  onToggle: () => {},
+  switchModalDisplay: () => {},
+}
+
+export const Context = createContext(defaultState)
 
 const Provider = ({ children }) => {
   const [isToggled, setIsToggled] = useState(false)
