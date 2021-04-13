@@ -27,6 +27,9 @@ const Error = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: ${({ isToggled }) =>
+    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  transition: 0.4s;
 
   h1 {
     font-size: clamp(4rem, 10vw, 20rem);

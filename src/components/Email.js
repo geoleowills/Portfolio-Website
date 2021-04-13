@@ -253,7 +253,7 @@ const Button = styled.button`
     messageSent ? "0px 15px 0px 15px" : "0 26px 0 0"};
 
   & :hover {
-    background-color: var(--icon-color);
+    background-color: var(--icon-colour);
   }
 `
 
