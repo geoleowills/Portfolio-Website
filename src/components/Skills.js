@@ -141,6 +141,7 @@ const SubTitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   padding-bottom: 1.5rem;
 `
 
@@ -180,6 +181,14 @@ const Icon = styled.div`
 
   & > h4 {
     padding-top: 10px;
+  }
+
+  @media screen and (max-width: 693px) {
+    width: 33%;
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 50%;
   }
 `
 
