@@ -13,7 +13,7 @@ import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
 
 const HomePage = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   const getRandomKey = () => {
     return shortid.generate()
@@ -40,10 +40,10 @@ const HomePage = () => {
   return (
     <HomepageContainer>
       <TargetDiv id="home"></TargetDiv>
-      <HomePageContent isToggled={isToggled} key={getRandomKey()}>
+      <HomePageContent darkMode={darkMode} key={getRandomKey()}>
         <MeImg src={MePng} width={250} />
         <TextBubble />
-        <SpeechBubbleText isToggled={isToggled}>
+        <SpeechBubbleText darkMode={darkMode}>
           <WindupChildren>
             <Pace ms={75}>
               Hi,
@@ -56,13 +56,13 @@ const HomePage = () => {
             </Pace>
           </WindupChildren>
         </SpeechBubbleText>
-        <TiltContainer perspective={500} isToggled={isToggled}>
+        <TiltContainer perspective={500} darkMode={darkMode}>
           <MainInfo>
             <Name
               data-aos="fade-up"
               data-aos-delay="50"
               data-aos-duration="1000"
-              isToggled={isToggled}
+              darkMode={darkMode}
             >
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.firstName
@@ -77,7 +77,7 @@ const HomePage = () => {
               data-aos="fade-up"
               data-aos-delay="150"
               data-aos-duration="1000"
-              isToggled={isToggled}
+              darkMode={darkMode}
             >
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.title
@@ -88,12 +88,12 @@ const HomePage = () => {
               to="aboutme"
               smooth={true}
               duration={1000}
-              isToggled={isToggled}
+              darkMode={darkMode}
               data-aos="fade-up"
               data-aos-delay="250"
               data-aos-duration="1000"
             >
-              <Arrow isToggled={isToggled} />
+              <Arrow darkMode={darkMode} />
             </ArrowContainer>
           </MainInfo>
         </TiltContainer>
@@ -128,8 +128,8 @@ const HomePageContent = styled.div`
   width: calc(100% - 70px);
   max-height: 100%;
   margin: 0 35px;
-  background: ${({ isToggled }) =>
-    isToggled
+  background: ${({ darkMode }) =>
+    darkMode
       ? "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-colour) 90%)"
       : "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-colour) 90%)"};
   z-index: 1;
@@ -157,8 +157,8 @@ const TiltContainer = styled(Tilt)`
   text-align: center;
   font-weight: bold;
   line-height: 1.1;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--main-colour)" : "var(--grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--main-colour)" : "var(--grey)"};
   transform-style: preserve-3d;
   box-shadow: 0 30px 20px rgb(0 0 0 / 40%);
 
@@ -171,8 +171,8 @@ const TiltContainer = styled(Tilt)`
 
 const Name = styled.h1`
   margin-bottom: 1.5rem;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--main-colour)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--main-colour)"};
   font-size: clamp(1.9rem, 3.5vw, 3.5rem);
   font-weight: 600;
   text-align: center;
@@ -184,8 +184,8 @@ const Title = styled.p`
   padding-left: 4px;
   font-size: clamp(0.8rem, 1.65vw, 1.6rem);
   font-weight: 200;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   letter-spacing: 2px;
 `
 
@@ -195,20 +195,19 @@ const ArrowContainer = styled(ScrollLink)`
   justify-content: center;
   height: 45px;
   width: 45px;
-  transition: 0.7s;
 `
 
 const Arrow = styled(ArrowDown)`
   height: 100%;
   width: 100%;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   z-index: 5;
   transition: 0.4s;
   cursor: pointer;
 
   & :hover {
-    color: orange;
+    color: var(--icon-colour);
     transform: rotate(360deg);
   }
 `
@@ -229,8 +228,9 @@ const SpeechBubbleText = styled.p`
   left: 148px;
   text-align: center;
   font-weight: 500;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  font-size: 16px;
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   letter-spacing: 1px;
 
   @media screen and (max-width: 1000px) {
@@ -243,7 +243,7 @@ const TextBubble = styled(SpeechBubble)`
   width: 150px;
   bottom: 200px;
   left: 125px;
-  fill: orange;
+  fill: var(--icon-colour);
 
   @media screen and (max-width: 1000px) {
     bottom: 98px;

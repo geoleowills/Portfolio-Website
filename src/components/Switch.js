@@ -5,15 +5,15 @@ import MoonIcon from "../assets/svgs/moonIcon.svg"
 import SunIcon from "../assets/svgs/sunIcon.svg"
 
 const Switch = () => {
-  const { isToggled, setIsToggled, onToggle } = useContext(Context)
+  const { darkMode, modeToggle } = useContext(Context)
 
   return (
     <SwitchContainer>
       <Input
         type="checkbox"
         id="checkbox"
-        checked={isToggled}
-        onChange={onToggle}
+        checked={darkMode}
+        onChange={modeToggle}
       />
       <SwitchSlider for="checkbox">
         <Moon />

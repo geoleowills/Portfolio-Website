@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Aos from "aos"
@@ -13,10 +12,8 @@ import GitHubLogo from "../assets/svgs/gitHubLogo.svg"
 import BackgroundImage from "gatsby-background-image"
 
 const Projects = () => {
-  const { isToggled } = useContext(Context)
-  const { modalDisplay, setModalDisplay, setSelectedModal } = useContext(
-    Context
-  )
+  const { darkMode } = useContext(Context)
+  const { modalDisplay, setSelectedModal } = useContext(Context)
 
   const { switchModalDisplay } = useContext(Context)
   useEffect(() => {
@@ -68,7 +65,7 @@ const Projects = () => {
           >
             <CoverImage fluid={item.node.coverPhoto.fluid}>
               <BlackOverlay>
-                <CardTitle isToggled={isToggled}>{item.node.heading}</CardTitle>
+                <CardTitle darkMode={darkMode}>{item.node.heading}</CardTitle>
                 <VideoButton
                   id={index}
                   type="button"
@@ -114,7 +111,7 @@ const Projects = () => {
   return (
     <Fragment>
       {modalDisplay ? <ModalWindow /> : <span></span>}
-      <ProjectContainer isToggled={isToggled}>
+      <ProjectContainer darkMode={darkMode}>
         <TargetDiv id="portfolio"></TargetDiv>
         <TitleContainer
           data-aos="fade-left"
@@ -125,7 +122,7 @@ const Projects = () => {
           <ProjectsHeading>PROJECT PORTFOLIO</ProjectsHeading>
         </TitleContainer>
         <Underline
-          isToggled={isToggled}
+          darkMode={darkMode}
           data-aos="fade-left"
           data-aos-delay="150"
           data-aos-duration="1000"
@@ -141,10 +138,10 @@ export default Projects
 const ProjectContainer = styled.div`
   margin: 0 35px;
   padding: 35px calc((100vw - 1300px) / 2);
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--dark-grey)" : "var(--light-grey)"};
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
   font-weight: 500;
 `
@@ -181,8 +178,8 @@ const Underline = styled.div`
   width: calc(100% - 70px);
   height: 1px;
   margin: 2rem 35px;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
 
 const ProjectWrapper = styled.div`
@@ -226,8 +223,8 @@ const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 135px;
-  height: 35px;
+  width: 5rem;
+  height: 2.2rem;
   margin-bottom: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -318,8 +315,8 @@ const SourceCodeButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 135px;
-  height: 35px;
+  width: 9rem;
+  height: 2.2rem;
   border-radius: 10px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -332,7 +329,7 @@ const SourceCodeButton = styled.a`
   font-weight: 600;
 
   & :hover {
-    background-color: orange;
+    background-color: var(--icon-colour);
   }
 `
 

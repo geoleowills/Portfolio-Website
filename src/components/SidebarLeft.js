@@ -7,30 +7,30 @@ import LinkedinLogo from "../assets/svgs/linkedinLogo.svg"
 import MailIcon from "../assets/svgs/mailIcon.svg"
 
 const SidebarLeft = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   return (
-    <Sidebar isToggled={isToggled}>
+    <Sidebar darkMode={darkMode}>
       <IconContainer
         href="https://www.linkedin.com/in/george-willens-947688b7/"
         target="_blank"
         rel="noreferrer noopener"
       >
-        <IconOne isToggled={isToggled} />
+        <IconOne darkMode={darkMode} />
       </IconContainer>
       <IconContainer
         href="https://github.com/geoleowills"
         target="_blank"
         rel="noreferrer noopener"
       >
-        <IconTwo isToggled={isToggled} />
+        <IconTwo darkMode={darkMode} />
       </IconContainer>
       <IconContainer
         href="mailto:willensgeorge@gmail.com"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconThree isToggled={isToggled} />
+        <IconThree darkMode={darkMode} />
       </IconContainer>
     </Sidebar>
   )
@@ -46,8 +46,8 @@ const Sidebar = styled.div`
   height: calc(100vh - 35px);
   left: 0;
   bottom: 0;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   transition: 0.4s;
   z-index: 6;
 `
@@ -61,35 +61,35 @@ const IconContainer = styled.a`
 
 const IconOne = styled(LinkedinLogo)`
   width: 22px;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
     transform: translate(0px, -3px);
   }
 `
 const IconTwo = styled(GithubLogo)`
   width: 22px;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
     transform: translate(0px, -3px);
   }
 `
 
 const IconThree = styled(MailIcon)`
   width: 22px;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
     transform: translate(0px, -3px);
   }
 `

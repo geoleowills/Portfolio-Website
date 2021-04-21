@@ -7,7 +7,7 @@ import MailSvg from "../assets/svgs/mail.svg"
 import SendSvg from "../assets/svgs/sendIcon.svg"
 
 const Email = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   const [formState, setFormState] = useState({
     name: "",
@@ -51,7 +51,7 @@ const Email = () => {
   }
 
   return (
-    <ContactContainer id="contact" isToggled={isToggled}>
+    <ContactContainer id="contact" darkMode={darkMode}>
       <LeftColumn
         data-aos="fade-right"
         data-aos-delay="50"
@@ -132,13 +132,13 @@ const ContactContainer = styled.div`
   align-items: center;
   width: calc(100% - 70px);
   height: 450px;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--dark-grey)" : "var(--light-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
   margin: -35px 35px 0 35px;
   padding: 35px calc((100vw - 1300px) / 2);
   transition: 0.4s;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
 
 const LeftColumn = styled.div`

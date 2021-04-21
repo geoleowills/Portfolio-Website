@@ -4,10 +4,10 @@ import { Context } from "../Context"
 import { Link as GatsbyLink } from "gatsby"
 
 const ErrorSection = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   return (
-    <Error isToggled={isToggled}>
+    <Error darkMode={darkMode}>
       <h1>404</h1>
       <p>Oh no! Page not found.</p>
       <Button to="/">GO HOME</Button>
@@ -18,17 +18,17 @@ const ErrorSection = () => {
 export default ErrorSection
 
 const Error = styled.div`
-  background: ${({ isToggled }) =>
-    isToggled
-      ? "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-colour) 90%)"
-      : "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-colour) 90%)"};
-  height: calc(100vh - 183px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  height: calc(100vh - 183px);
+  background: ${({ darkMode }) =>
+    darkMode
+      ? "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--dark-grey) 10%, var(--dark-grey) 90%, var(--main-colour) 90%)"
+      : "linear-gradient(135deg, var(--main-colour) 0, var(--main-colour) 10%, var(--light-grey) 10%, var(--light-grey) 90%, var(--main-colour) 90%)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
 
   h1 {

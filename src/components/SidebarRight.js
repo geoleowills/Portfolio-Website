@@ -4,9 +4,9 @@ import "aos/dist/aos.css"
 import { Context } from "../Context"
 
 const SidebarRight = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
-  return <Sidebar isToggled={isToggled}></Sidebar>
+  return <Sidebar darkMode={darkMode}></Sidebar>
 }
 
 const Sidebar = styled.div`
@@ -17,8 +17,8 @@ const Sidebar = styled.div`
   transition: 0.4s;
   bottom: 0;
   right: 0;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   z-index: 7;
 `
 

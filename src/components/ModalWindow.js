@@ -5,12 +5,9 @@ import { Context } from "../Context"
 import CloseIcon from "../assets/svgs/closeIcon.svg"
 
 const ModalWindow = () => {
-  const {
-    modalDisplay,
-    switchModalDisplay,
-    selectedModal,
-    setSelectedModal,
-  } = useContext(Context)
+  const { modalDisplay, switchModalDisplay, selectedModal } = useContext(
+    Context
+  )
 
   const [id, setId] = useState(selectedModal.toString())
   const [videoUrl, setVideoUrl] = useState(null)
@@ -129,7 +126,7 @@ const VideoContainer = styled.div`
 const Icon = styled(CloseIcon)`
   width: 100%;
   height: 100%;
-  color: white;
+  color: var(--very-light-grey);
   cursor: pointer;
 `
 

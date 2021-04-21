@@ -5,10 +5,10 @@ import { Context } from "../Context"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
 
 const Footer = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   return (
-    <FooterContainer isToggled={isToggled}>
+    <FooterContainer darkMode={darkMode}>
       <Info>
         <ContactInfo>
           <h1>GW</h1>
@@ -21,7 +21,7 @@ const Footer = () => {
         </SiteInfo>
       </Info>
       <ArrowContainer to="home" smooth={true} duration={1000}>
-        <Arrow isToggled={isToggled} />
+        <Arrow darkMode={darkMode} />
       </ArrowContainer>
     </FooterContainer>
   )
@@ -37,10 +37,10 @@ const FooterContainer = styled.div`
   height: 100%;
   margin: 0 35px;
   padding: 35px calc((100vw - 1300px) / 2);
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
   transition: 0.4s;
 `
 
@@ -73,8 +73,8 @@ const ArrowContainer = styled(ScrollLink)`
   cursor: pointer;
 `
 const Arrow = styled(ArrowDown)`
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transform: rotate(180deg);
   transition: 0.7s;
 

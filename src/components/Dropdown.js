@@ -7,7 +7,7 @@ import { menuData } from "../data/MenuData"
 import CloseIcon from "../assets/svgs/closeIcon.svg"
 
 const Dropdown = () => {
-  const { isOpen, toggle, isToggled } = useContext(Context)
+  const { dropdownOpen, dropdownToggle, darkMode } = useContext(Context)
   const [currentLocation, setCurrentLocation] = useState("/")
 
   useEffect(() => {
@@ -15,8 +15,12 @@ const Dropdown = () => {
   }, [])
 
   return (
-    <DropdownContainer isOpen={isOpen} onClick={toggle} isToggled={isToggled}>
-      <Icon onClick={toggle} />
+    <DropdownContainer
+      dropdownOpen={dropdownOpen}
+      onClick={dropdownToggle}
+      darkMode={darkMode}
+    >
+      <Icon onClick={dropdownToggle} />
       {currentLocation === "/" ? (
         <DropdownMenu>
           {menuData.map((item, index) => (
@@ -25,7 +29,7 @@ const Dropdown = () => {
               key={index}
               smooth={true}
               duration={1000}
-              onClick={toggle}
+              onClick={dropdownToggle}
             >
               {item.title}
             </DropdownLink>
@@ -45,26 +49,26 @@ export default Dropdown
 const DropdownContainer = styled.aside`
   position: fixed;
   display: flex;
-  top: ${({ isOpen }) => (isOpen ? "35px" : "-100%")};
-  left: 35px;
   align-items: center;
   justify-content: center;
   width: calc(100vw - 70px);
   height: calc(100vh - 35px);
-  background: ${({ isToggled }) =>
-    isToggled ? "var(--dark-grey)" : "var(--very-dark-grey)"};
-  transition: 0.4s ease-in-out;
+  top: ${({ dropdownOpen }) => (dropdownOpen ? "35px" : "-100%")};
+  left: 35px;
+  background: ${({ darkMode }) =>
+    darkMode ? "var(--dark-grey)" : "var(--very-dark-grey)"};
+  transition: 0.4s;
   z-index: 3;
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  opacity: ${({ dropdownOpen }) => (dropdownOpen ? "1" : "0")};
 `
 
 const Icon = styled(CloseIcon)`
-  color: var(--very-light-grey);
   position: absolute;
   width: 35px;
   height: 35px;
   top: 15px;
   right: 20px;
+  color: var(--very-light-grey);
   background: transparent;
   cursor: pointer;
 `
@@ -86,7 +90,7 @@ const DropdownLink = styled(ScrollLink)`
   align-items: center;
   justify-content: center;
   color: var(--very-light-grey);
-  transition: 0.4s ease-in-out;
+  transition: 0.4s;
   font-size: 1.5rem;
   text-decoration: none;
   list-style: none;

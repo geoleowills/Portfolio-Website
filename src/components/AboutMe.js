@@ -8,7 +8,7 @@ import { Context } from "../Context"
 import ProfileIcon from "../assets/svgs/profileIcon.svg"
 
 const AboutMe = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   useEffect(() => {
     Aos.init({})
@@ -29,17 +29,17 @@ const AboutMe = () => {
   `)
 
   return (
-    <AboutMeContainer id="aboutme" isToggled={isToggled}>
+    <AboutMeContainer id="aboutme" darkMode={darkMode}>
       <TitleContainer
         data-aos="fade-right"
         data-aos-delay="50"
         data-aos-duration="1000"
       >
-        <Icon isToggled={isToggled} />
+        <Icon darkMode={darkMode} />
         <Title>ABOUT ME</Title>
       </TitleContainer>
       <Underline
-        isToggled={isToggled}
+        darkMode={darkMode}
         data-aos="fade-right"
         data-aos-delay="150"
         data-aos-duration="1000"
@@ -62,12 +62,12 @@ export default AboutMe
 const AboutMeContainer = styled.div`
   height: 100%;
   /* Minus stops header scrolling over content when you click link to that element. */
-  margin: -35px 35px -35px 35px;
+  margin: -35px 35px;
   padding: 70px calc((100vw - 1300px) / 2);
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--grey)"};
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
 `
 
@@ -93,8 +93,8 @@ const Underline = styled.div`
   width: calc(100% - 70px);
   height: 1px;
   margin: 2rem 35px;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
 
 const ContentWrapper = styled.div`

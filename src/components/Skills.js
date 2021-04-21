@@ -9,14 +9,14 @@ import { Context } from "../Context"
 import SkillsIcon from "../assets/svgs/skillsIcon.svg"
 
 const Stats = () => {
-  const { isToggled } = useContext(Context)
+  const { darkMode } = useContext(Context)
 
   useEffect(() => {
     Aos.init({})
   }, [])
 
   return (
-    <StatsContainer isToggled={isToggled}>
+    <SkillsContainer darkMode={darkMode}>
       <TargetDiv id="skills"></TargetDiv>
       <TitleContainer
         data-aos="fade-up"
@@ -98,29 +98,28 @@ const Stats = () => {
           )
         })}
       </Wrapper>
-    </StatsContainer>
+    </SkillsContainer>
   )
 }
 
 export default Stats
 
-const StatsContainer = styled.div`
-  transition: 0.4s;
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--grey)"};
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 35px calc((100vw - 1300px) / 2);
-  margin: 0 35px;
   width: calc(100% - 70px);
+  margin: 0 35px;
+  padding: 35px calc((100vw - 1300px) / 2);
   margin-left: auto;
   margin-right: auto;
-  /* Stops header scrolling over content when you click link to that element. */
-  /* margin-top: -35px; */
+  transition: 0.4s;
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
 `
+
 // This div is the target that the menu links are set to, we can set this div above the element to avoid
 // the header overlapping anything.
 const TargetDiv = styled.div`
@@ -132,11 +131,11 @@ const TargetDiv = styled.div`
 
 const TitleContainer = styled.div`
   display: flex;
-
   justify-content: center;
   align-items: center;
   padding-bottom: 1.5rem;
 `
+
 const SubTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -161,9 +160,9 @@ const Underline = styled.hr`
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100%;
   justify-content: center;
   align-items: center;
+  width: 100%;
   flex-wrap: wrap;
   padding: 0 2rem;
   margin-bottom: 4rem;
@@ -174,9 +173,9 @@ const Icon = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 25%;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
-  width: 25%;
   text-align: center;
 
   & > h4 {

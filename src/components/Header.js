@@ -10,18 +10,18 @@ import MenuBars from "../assets/svgs/menuBars.svg"
 const Header = () => {
   const [navbar, setNavbar] = useState(false)
   const [currentLocation, setCurrentLocation] = useState("/")
-  const { isToggled, onToggle, toggle } = useContext(Context)
+  const { darkMode, modeToggle, dropdownToggle } = useContext(Context)
 
   useEffect(() => {
     setCurrentLocation(window.location.pathname)
   })
 
   return (
-    <HeaderContainer isToggled={isToggled}>
+    <HeaderContainer darkMode={darkMode}>
       <IconLink to="/">
-        <Initials isToggled={isToggled}>GW</Initials>
+        <Initials darkMode={darkMode}>GW</Initials>
       </IconLink>
-      <Nav navbar={navbar} isToggled={isToggled}>
+      <Nav navbar={navbar} darkMode={darkMode}>
         {currentLocation === "/" ? (
           <NavMenu>
             {menuData.map((item, index) => (
@@ -30,22 +30,22 @@ const Header = () => {
                 key={index}
                 smooth={true}
                 duration={1000}
-                isToggled={isToggled}
+                darkMode={darkMode}
               >
                 {item.title}
               </NavLink>
             ))}
           </NavMenu>
         ) : (
-          <HomeLink to="/" isToggled={isToggled}>
+          <HomeLink to="/" darkMode={darkMode}>
             .home()
           </HomeLink>
         )}
       </Nav>
       <SwitchContainer>
-        <Switch isToggled={isToggled} onToggle={onToggle} />
+        <Switch darkMode={darkMode} modeToggle={modeToggle} />
       </SwitchContainer>
-      <Bars isToggled={isToggled} onClick={toggle} />
+      <Bars darkMode={darkMode} onClick={dropdownToggle} />
     </HeaderContainer>
   )
 }
@@ -61,8 +61,8 @@ const HeaderContainer = styled.div`
   height: 35px;
   top: 0;
   padding: 0 calc((100vw - 1300px) / 2);
-  background-color: ${({ isToggled }) =>
-    isToggled ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
+  background-color: ${({ darkMode }) =>
+    darkMode ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   transition: 0.4s;
   z-index: 4;
   overflow-x: hidden;
@@ -78,8 +78,8 @@ const IconLink = styled(GatsbyLink)`
 `
 
 const Initials = styled.h1`
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   font-size: 1.3rem;
 `
 
@@ -110,15 +110,15 @@ const NavLink = styled(ScrollLink)`
   align-items: center;
   height: 100%;
   padding: 0 16px;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   text-decoration: none;
   cursor: pointer;
   font-size: 0.9rem;
   transition: 0.2s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
   }
 `
 
@@ -127,15 +127,15 @@ const HomeLink = styled(GatsbyLink)`
   align-items: center;
   height: 100%;
   padding: 0 16px;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   text-decoration: none;
   cursor: pointer;
   font-size: 0.9rem;
   transition: 0.2s;
 
   &:hover {
-    color: orange;
+    color: var(--icon-colour);
   }
 `
 
@@ -154,8 +154,8 @@ const SwitchContainer = styled.div`
 
 const Bars = styled(MenuBars)`
   display: none;
-  color: ${({ isToggled }) =>
-    isToggled ? "var(--very-light-grey)" : "var(very-dark-grey)"};
+  color: ${({ darkMode }) =>
+    darkMode ? "var(--very-light-grey)" : "var(very-dark-grey)"};
 
   @media screen and (max-width: 768px) {
     display: flex;

@@ -1,30 +1,29 @@
 import React, { createContext, useState } from "react"
 
 const defaultState = {
-  isToggled: false,
+  darkMode: false,
   modalDisplay: false,
   selectedModal: null,
   isOpen: false,
   toggle: () => {},
-  onToggle: () => {},
+  modeToggle: () => {},
   switchModalDisplay: () => {},
 }
 
 export const Context = createContext(defaultState)
 
 const Provider = ({ children }) => {
-  const [isToggled, setIsToggled] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
   const [modalDisplay, setModalDisplay] = useState(false)
   const [selectedModal, setSelectedModal] = useState(null)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggle = () => {
-    setIsOpen(!isOpen)
+  const dropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen)
   }
 
-  const onToggle = () => {
-    setIsToggled(!isToggled)
+  const modeToggle = () => {
+    setDarkMode(!darkMode)
   }
 
   const switchModalDisplay = () => {
@@ -32,17 +31,17 @@ const Provider = ({ children }) => {
   }
 
   const value = {
-    isToggled,
-    setIsToggled,
-    onToggle,
+    darkMode,
+    setDarkMode,
+    modeToggle,
     modalDisplay,
     setModalDisplay,
     switchModalDisplay,
     selectedModal,
     setSelectedModal,
-    toggle,
-    isOpen,
-    setIsOpen,
+    dropdownToggle,
+    dropdownOpen,
+    setDropdownOpen,
   }
 
   return <Context.Provider value={value}>{children}</Context.Provider>
