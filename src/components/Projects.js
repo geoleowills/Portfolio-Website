@@ -59,6 +59,7 @@ const Projects = () => {
         <CardContainer>
           <ProjectCard
             key={index}
+            darkMode={darkMode}
             data-aos="fade-left"
             data-aos-delay="350"
             data-aos-duration="1000"
@@ -204,8 +205,9 @@ const ProjectCard = styled.div`
   background-color: var(--very-light-grey);
   color: var(--very-dark-grey);
   border-radius: 10px;
-  transition: 0.2s ease;
-  box-shadow: 3px 3px 10px #999999;
+  transition: 0.4s;
+  box-shadow: ${({ darkMode }) =>
+    darkMode ? "3px 3px 10px #111111" : "3px 3px 10px #999999"};
   overflow: hidden;
   padding-bottom: 20px;
 `
