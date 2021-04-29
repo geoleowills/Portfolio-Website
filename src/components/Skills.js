@@ -154,7 +154,7 @@ const TitleIcon = styled(SkillsIcon)`
 
 const SubHeading = styled.h2`
   margin-top: 35px;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
 `
 
 const Underline = styled.hr`
