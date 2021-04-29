@@ -24,7 +24,7 @@ const Stats = () => {
         data-aos-duration="1000"
       >
         <TitleIcon />
-        <Heading>Skills</Heading>
+        <Heading>SKILLS</Heading>
       </TitleContainer>
       <Underline
         data-aos="fade-up"
@@ -36,8 +36,8 @@ const Stats = () => {
         data-aos-delay="250"
         data-aos-duration="1000"
       >
-        <SubHeading>Current Skills</SubHeading>
-        <p>My current skillset.</p>
+        <SubHeading>Current Skill Set</SubHeading>
+        {/* <p>My current skillset.</p> */}
       </SubTitleContainer>
 
       <Wrapper>
@@ -60,7 +60,6 @@ const Stats = () => {
         data-aos-duration="1000"
       >
         <SubHeading>Soon Plan To Explore</SubHeading>
-        <p>Skills and technologies I plan to explore in the coming months.</p>
       </SubTitleContainer>
       <Wrapper>
         {NearFutureSkillsData.map((item, index) => {
@@ -82,7 +81,6 @@ const Stats = () => {
         data-aos-duration="1000"
       >
         <SubHeading>Long Term Skill Goals</SubHeading>
-        <p>Skills and technologies I plan to explore in future.</p>
       </SubTitleContainer>
       <Wrapper>
         {FutureSkillsData.map((item, index) => {
@@ -108,11 +106,8 @@ const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: calc(100% - 70px);
   margin: 0 35px;
-  padding: 35px calc((100vw - 1300px) / 2);
-  margin-left: auto;
-  margin-right: auto;
+  padding: 70px calc((100vw - 1300px) / 2);
   transition: 0.4s;
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
@@ -126,7 +121,7 @@ const TargetDiv = styled.div`
   width: 100%;
   height: 0;
   position: relative;
-  top: -70px;
+  top: -105px;
 `
 
 const TitleContainer = styled.div`
@@ -149,9 +144,18 @@ const Heading = styled.h1`
   font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: bold;
   padding-left: 0.5rem;
+  margin-right: 1rem;
 `
 
-const SubHeading = styled.h2``
+const TitleIcon = styled(SkillsIcon)`
+  color: var(--icon-colour);
+  font-size: 2rem;
+`
+
+const SubHeading = styled.h2`
+  margin-top: 35px;
+  font-size: 2rem;
+`
 
 const Underline = styled.hr`
   margin: 0 2rem 1.5rem 2rem;
@@ -190,9 +194,4 @@ const Icon = styled.div`
   @media screen and (max-width: 550px) {
     width: 50%;
   }
-`
-
-const TitleIcon = styled(SkillsIcon)`
-  color: var(--icon-colour);
-  font-size: 2rem;
 `

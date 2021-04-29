@@ -132,7 +132,7 @@ const ContactContainer = styled.div`
   align-items: center;
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
-  margin: -35px 35px 0 35px;
+  margin: 0 35px;
   padding: 35px calc((100vw - 1300px) / 2);
   transition: 0.4s;
   color: ${({ darkMode }) =>

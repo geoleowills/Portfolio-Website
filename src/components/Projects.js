@@ -154,7 +154,7 @@ const TargetDiv = styled.div`
   position: relative;
   width: 100%;
   height: 0;
-  top: -70px;
+  top: -105px;
 `
 
 const TitleContainer = styled.div`
@@ -261,7 +261,7 @@ const CardDescription = styled.div`
     padding-left: 1rem;
   }
 
-  @media screen and (max-width: 1150px) {
+  /* @media screen and (max-width: 1150px) {
     font-size: 0.85rem;
   }
 
@@ -275,7 +275,7 @@ const CardDescription = styled.div`
 
   @media screen and (max-width: 400px) {
     font-size: 0.65rem;
-  }
+  } */
 `
 
 const TechnologiesList = styled.ul`

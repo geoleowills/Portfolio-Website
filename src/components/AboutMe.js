@@ -29,7 +29,8 @@ const AboutMe = () => {
   `)
 
   return (
-    <AboutMeContainer id="aboutme" darkMode={darkMode}>
+    <AboutMeContainer darkMode={darkMode}>
+      <TargetDiv id="aboutme"></TargetDiv>
       <TitleContainer
         data-aos="fade-right"
         data-aos-delay="50"
@@ -62,13 +63,20 @@ export default AboutMe
 const AboutMeContainer = styled.div`
   height: 100%;
   /* Minus stops header scrolling over content when you click link to that element. */
-  margin: -35px 35px;
+  margin: 0 35px;
   padding: 70px calc((100vw - 1300px) / 2);
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
+`
+
+const TargetDiv = styled.div`
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -105px;
 `
 
 const TitleContainer = styled.div`
@@ -102,7 +110,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 35px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 
   & > p {
     margin-bottom: 1rem;
