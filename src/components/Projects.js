@@ -138,13 +138,14 @@ export default Projects
 
 const ProjectContainer = styled.div`
   margin: 0 35px;
-  padding: 35px calc((100vw - 1300px) / 2);
+  padding: 70px calc((100vw - 1300px) / 2);
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   transition: 0.4s;
   font-weight: 500;
+  overflow-x: hidden;
 `
 
 // This div is the target that the menu links are set to, we can set this div above the element to avoid
@@ -225,10 +226,10 @@ const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
+  width: 4.9rem;
   height: 2.2rem;
   margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: 0.4s;
@@ -245,7 +246,7 @@ const VideoButton = styled.button`
 const CardDescription = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 400;
   padding: 5px 20px 0 20px;
 
@@ -290,12 +291,13 @@ const TechnologiesList = styled.ul`
 
   & > li {
     margin: 0 5px 10px 5px;
-    padding: 2px 5px;
+    padding: 4px 9px;
     font-size: 1rem;
-    border: 0;
-    border-radius: 6px;
-    background-color: var(--dark-grey);
-    color: var(--very-light-grey);
+    border: 2px solid var(--main-colour);
+    border-radius: 60px;
+    font-weight: 500;
+    color: var(--very-dark-grey);
+    transition: 0.4s;
   }
 `
 
@@ -317,9 +319,9 @@ const SourceCodeButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 9rem;
+  width: 8.8rem;
   height: 2.2rem;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 400;
@@ -336,8 +338,8 @@ const SourceCodeButton = styled.a`
 `
 
 const GhLogo = styled(GitHubLogo)`
-  width: 25px;
-  margin-right: 5px;
+  width: 22px;
+  margin-right: 6px;
 `
 
 const TechnologiesContainer = styled.div`

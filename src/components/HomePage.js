@@ -58,12 +58,7 @@ const HomePage = () => {
         </SpeechBubbleText>
         <TiltContainer perspective={500} darkMode={darkMode}>
           <MainInfo>
-            <Name
-              data-aos="fade-up"
-              data-aos-delay="50"
-              data-aos-duration="1000"
-              darkMode={darkMode}
-            >
+            <Name darkMode={darkMode}>
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.firstName
               })}
@@ -73,12 +68,7 @@ const HomePage = () => {
               })}
             </Name>
 
-            <Title
-              data-aos="fade-up"
-              data-aos-delay="150"
-              data-aos-duration="1000"
-              darkMode={darkMode}
-            >
+            <Title darkMode={darkMode}>
               {myInfo.allContentfulHomepage.edges.map(name => {
                 return name.node.title
               })}
@@ -173,7 +163,7 @@ const Name = styled.h1`
   margin-bottom: 1.5rem;
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--main-colour)"};
-  font-size: clamp(1.9rem, 3.5vw, 3.5rem);
+  font-size: clamp(1.9rem, 3vw, 3rem);
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
@@ -182,7 +172,7 @@ const Name = styled.h1`
 const Title = styled.p`
   margin-bottom: 2rem;
   padding-left: 4px;
-  font-size: clamp(0.8rem, 1.65vw, 1.6rem);
+  font-size: clamp(0.9rem, 1.41vw, 1.37rem);
   font-weight: 200;
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};

@@ -73,6 +73,7 @@ const MainContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   transition: 0.4s;
   z-index: 8;
+  overflow-x: hidden;
 `
 
 const ModalWindowContainer = styled.div`

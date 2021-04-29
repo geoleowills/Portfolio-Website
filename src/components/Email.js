@@ -130,8 +130,6 @@ const ContactContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% - 70px);
-  height: 450px;
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
   margin: -35px 35px 0 35px;
@@ -139,6 +137,7 @@ const ContactContainer = styled.div`
   transition: 0.4s;
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
+  overflow-x: hidden;
 `
 
 const LeftColumn = styled.div`

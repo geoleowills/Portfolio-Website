@@ -65,7 +65,6 @@ const HeaderContainer = styled.div`
     darkMode ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   transition: 0.4s;
   z-index: 4;
-  overflow-x: hidden;
 `
 
 const IconLink = styled(GatsbyLink)`
