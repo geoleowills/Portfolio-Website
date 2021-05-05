@@ -62,9 +62,8 @@ export default AboutMe
 
 const AboutMeContainer = styled.div`
   height: 100%;
-  /* Minus stops header scrolling over content when you click link to that element. */
   margin: 0 35px;
-  padding: 70px calc((100vw - 1300px) / 2);
+  padding: 70px calc((100vw - 1200px) / 2);
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
   color: ${({ darkMode }) =>
@@ -72,10 +71,14 @@ const AboutMeContainer = styled.div`
   transition: 0.4s;
 `
 
+// This div is the target that the menu links are set to, we can set this div above the element to avoid
+// the header overlapping anything.
 const TargetDiv = styled.div`
   position: relative;
   width: 0;
   height: 0;
+  /* Minus stops header scrolling over content when you click link to that element.
+  35px is header and 70px is padding in parent element of target div */
   top: -105px;
 `
 
@@ -110,7 +113,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 35px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   & > p {
     margin-bottom: 1rem;

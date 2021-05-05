@@ -138,7 +138,7 @@ export default Projects
 
 const ProjectContainer = styled.div`
   margin: 0 35px;
-  padding: 70px calc((100vw - 1300px) / 2);
+  padding: 70px calc((100vw - 1200px) / 2);
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--dark-grey)" : "var(--light-grey)"};
   color: ${({ darkMode }) =>
@@ -154,6 +154,8 @@ const TargetDiv = styled.div`
   position: relative;
   width: 100%;
   height: 0;
+  /* Minus stops header scrolling over content when you click link to that element.
+  35px is header and 70px is padding in parent element of target div */
   top: -105px;
 `
 

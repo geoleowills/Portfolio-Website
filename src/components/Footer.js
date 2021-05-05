@@ -36,7 +36,7 @@ const FooterContainer = styled.div`
   width: calc(100% - 70px);
   height: 100%;
   margin: 0 35px;
-  padding: 35px calc((100vw - 1300px) / 2);
+  padding: 35px calc((100vw - 1200px) / 2);
   color: ${({ darkMode }) =>
     darkMode ? "var(--very-light-grey)" : "var(--very-dark-grey)"};
   background-color: ${({ darkMode }) =>

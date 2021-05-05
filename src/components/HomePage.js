@@ -79,9 +79,6 @@ const HomePage = () => {
               smooth={true}
               duration={1000}
               darkMode={darkMode}
-              data-aos="fade-up"
-              data-aos-delay="250"
-              data-aos-duration="1000"
             >
               <Arrow darkMode={darkMode} />
             </ArrowContainer>
@@ -108,6 +105,7 @@ const TargetDiv = styled.div`
   position: relative;
   width: 0;
   height: 0;
+  /* Minus stops header scrolling over content when you click link to that element. */
   top: -35px;
 `
 

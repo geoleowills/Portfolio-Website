@@ -60,7 +60,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 35px;
   top: 0;
-  padding: 0 calc((100vw - 1300px) / 2);
+  padding: 0 calc((100vw - 1200px) / 2);
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--very-dark-grey)" : "var(--very-light-grey)"};
   transition: 0.4s;

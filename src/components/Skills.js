@@ -37,9 +37,7 @@ const Stats = () => {
         data-aos-duration="1000"
       >
         <SubHeading>Current Skill Set</SubHeading>
-        {/* <p>My current skillset.</p> */}
       </SubTitleContainer>
-
       <Wrapper>
         {CurrentSkillsData.map((item, index) => {
           return (
@@ -107,7 +105,7 @@ const SkillsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 35px;
-  padding: 70px calc((100vw - 1300px) / 2);
+  padding: 70px calc((100vw - 1200px) / 2);
   transition: 0.4s;
   background-color: ${({ darkMode }) =>
     darkMode ? "var(--very-dark-grey)" : "var(--grey)"};
@@ -121,6 +119,7 @@ const TargetDiv = styled.div`
   width: 100%;
   height: 0;
   position: relative;
+  /* 35px is header and 70px is padding in parent element of target div */
   top: -105px;
 `
 
@@ -137,7 +136,6 @@ const SubTitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 1.5rem;
 `
 
 const Heading = styled.h1`
@@ -153,8 +151,9 @@ const TitleIcon = styled(SkillsIcon)`
 `
 
 const SubHeading = styled.h2`
-  margin-top: 35px;
-  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin: 35px 0;
+  font-size: 1.7rem;
+  font-weight: 600;
 `
 
 const Underline = styled.hr`
