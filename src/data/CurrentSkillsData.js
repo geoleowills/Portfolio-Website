@@ -10,6 +10,7 @@ import PostgresqlSvg from "../assets/svgs/postgresql.svg"
 import ReactSvg from "../assets/svgs/reactLogo.svg"
 import ContentfulSvg from "../assets/svgs/contentful.svg"
 import GitSvg from "../assets/svgs/gitLogo.svg"
+import SassSvg from "../assets/svgs/sassLogo.svg"
 
 const width = 90
 const height = 90
@@ -58,5 +59,9 @@ export const CurrentSkillsData = [
   {
     icon: <GitSvg height={height} width={width} />,
     name: "Git",
+  },
+  {
+    icon: <SassSvg height={height} width={width} />,
+    name: "Sass",
   },
 ]
