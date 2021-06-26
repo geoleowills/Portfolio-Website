@@ -1,6 +1,6 @@
 import React from "react"
 import JavaSvg from "../assets/svgs/java.svg"
-import PythonSvg from "../assets/svgs/python.svg"
+import CSharpLogo from "../assets/svgs/cSharpLogo.svg"
 
 const width = 90
 const height = 90
@@ -11,7 +11,7 @@ export const FutureSkillsData = [
     name: "Java",
   },
   {
-    icon: <PythonSvg height={height} width={width} />,
-    name: "Python",
+    icon: <CSharpLogo height={height} width={width} />,
+    name: "C#",
   },
 ]
