@@ -7,7 +7,7 @@ import shortid from "shortid"
 import { Context } from "../Context"
 import "aos/dist/aos.css"
 import Tilt from "react-parallax-tilt"
-import { Pace, WindupChildren } from "windups"
+import Typewriter from "typewriter-effect"
 import MePng from "../assets/images/me.png"
 import SpeechBubble from "../assets/svgs/speechBubble.svg"
 import ArrowDown from "../assets/svgs/arrowDown.svg"
@@ -42,20 +42,38 @@ const HomePage = () => {
       <TargetDiv id="home"></TargetDiv>
       <HomePageContent darkMode={darkMode} key={getRandomKey()}>
         <MeImg src={MePng} width={250} />
-        <TextBubble />
-        <SpeechBubbleText darkMode={darkMode}>
-          <WindupChildren>
-            <Pace ms={75}>
-              Hi,
-              <br />
-              I'm George.
-              <br />
-              Welcome to
-              <br />
-              my site!
-            </Pace>
-          </WindupChildren>
-        </SpeechBubbleText>
+        {darkMode ? (
+          <TypingContainer>
+            <Typewriter
+              onInit={typewriter => {
+                typewriter
+                  .typeString(
+                    "<span style='color: var(--very-light-grey)'>Hi, I'm George. Welcome to my site!</span>"
+                  )
+                  .callFunction(() => {
+                    console.log("String typed out!")
+                  })
+                  .start()
+              }}
+            />
+          </TypingContainer>
+        ) : (
+          <TypingContainer>
+            <Typewriter
+              onInit={typewriter => {
+                typewriter
+                  .typeString(
+                    "<span style='color: var(--very-dark-grey)'>Hi, I'm George. Welcome to my site!</span>"
+                  )
+                  .callFunction(() => {
+                    console.log("String typed out!")
+                  })
+                  .start()
+              }}
+            />
+          </TypingContainer>
+        )}
+
         <TiltContainer perspective={500} darkMode={darkMode}>
           <MainInfo>
             <Name darkMode={darkMode}>
@@ -202,19 +220,19 @@ const Arrow = styled(ArrowDown)`
 
 const MeImg = styled.img`
   position: absolute;
-  bottom: 35px;
-  left: -80px;
+  bottom: 55px;
+  left: 5px;
 
   @media screen and (max-width: 1000px) {
     bottom: -45px;
   }
 `
 
-const SpeechBubbleText = styled.p`
+const TypingContainer = styled.div`
   position: absolute;
-  bottom: 240px;
-  left: 148px;
-  text-align: center;
+  bottom: 25px;
+  left: 60px;
+  /* text-align: center; */
   font-weight: 500;
   font-size: 16px;
   color: ${({ darkMode }) =>
@@ -223,17 +241,5 @@ const SpeechBubbleText = styled.p`
 
   @media screen and (max-width: 1000px) {
     bottom: 135px;
-  }
-`
-
-const TextBubble = styled(SpeechBubble)`
-  position: absolute;
-  width: 150px;
-  bottom: 200px;
-  left: 125px;
-  fill: var(--icon-colour);
-
-  @media screen and (max-width: 1000px) {
-    bottom: 98px;
   }
 `

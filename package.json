@@ -6,9 +6,11 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "aos": "^2.3.4",
+    "autoprefixer": "^10.2.6",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.11.1",
-    "gatsby": "^2.32.4",
+    "css-loader": "^5.2.6",
+    "gatsby": "^3.8.0",
     "gatsby-background-image": "^1.4.1",
     "gatsby-cli": "^2.19.1",
     "gatsby-image": "^2.4.21",
@@ -35,7 +37,7 @@
     "react-typing-effect": "^2.0.5",
     "shortid": "^2.2.16",
     "styled-components": "^5.2.1",
-    "typewriter-effect": "^2.17.0",
+    "typewriter-effect": "^2.18.0",
     "vanilla-tilt": "^1.7.0",
     "windups": "^1.1.9"
   },
