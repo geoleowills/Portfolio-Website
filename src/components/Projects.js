@@ -33,9 +33,6 @@ const Projects = () => {
             description {
               raw
             }
-            shortDescription {
-              raw
-            }
             coverPhoto {
               fluid {
                 ...GatsbyContentfulFluid_withWebp

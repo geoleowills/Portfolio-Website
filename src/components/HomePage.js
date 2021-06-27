@@ -48,7 +48,7 @@ const HomePage = () => {
               onInit={typewriter => {
                 typewriter
                   .typeString(
-                    "<span style='color: var(--very-light-grey)'>Hi, I'm George. Welcome to my site!</span>"
+                    "<span style='color: var(--very-light-grey)'>Hey, what's up? I'm George. Welcome to my site!</span>"
                   )
                   .callFunction(() => {
                     console.log("String typed out!")
@@ -63,7 +63,7 @@ const HomePage = () => {
               onInit={typewriter => {
                 typewriter
                   .typeString(
-                    "<span style='color: var(--very-dark-grey)'>Hi, I'm George. Welcome to my site!</span>"
+                    "<span style='color: var(--very-dark-grey)'>Hey, what's up? I'm George. Welcome to my site!</span>"
                   )
                   .callFunction(() => {
                     console.log("String typed out!")
