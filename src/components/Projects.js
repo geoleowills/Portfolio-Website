@@ -225,9 +225,11 @@ const VideoButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 160px;
   width: 4.9rem;
   height: 2.2rem;
-  margin-bottom: 10px;
   border-radius: 100px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -318,6 +320,9 @@ const SourceCodeButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   width: 8.8rem;
   height: 2.2rem;
   border-radius: 100px;
